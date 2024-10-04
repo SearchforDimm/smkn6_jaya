@@ -1,0 +1,539 @@
+html,
+body {
+	font-family: "Poppins";
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+nav {
+	transition: all 0.5s;
+	font-family: "Poppins";
+}
+
+.navbar .nav-link {
+	color: #fff;
+	display: flex;
+}
+
+.navbar-brand {
+	margin-right: 420px !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+	color: #fff;
+	text-decoration: none;
+}
+
+.navbar .navbar-brand {
+	color: #000;
+}
+
+/* Change navbar styling on scroll */
+.navbar.active {
+	background: #fff;
+	box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.active .nav-link {
+	color: #555;
+}
+
+.navbar.active .nav-link:hover,
+.navbar.active .nav-link:focus {
+	color: #555;
+	text-decoration: none;
+}
+
+.navbar.active .navbar-brand {
+	color: #555;
+}
+
+.header {
+	margin-left: 55px;
+}
+
+.logoheader {
+	width: 945px;
+	margin-top: -50px;
+}
+
+span {
+	font-weight: bold;
+	font-size: 64px;
+}
+
+.text-head {
+	margin-top: 100px !important;
+	padding-left: 100px !important;
+}
+
+.text-head h2 {
+	font-family: "Poppins";
+	font-size: 40px;
+}
+
+p,
+h1 {
+	font-family: "Poppins" !important;
+}
+
+.btn-daftar {
+	background-image: linear-gradient(#1a129f, #6156f9) !important;
+	font-family: "Poppins";
+	border-radius: 40px !important;
+}
+
+#btnScrollToTop {
+	position: fixed;
+	right: 95%;
+	bottom: 20px;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background: #6156f9;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+	color: #fff;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+#btnScrollToTop:active {
+	background: #1a129f;
+}
+
+.shimsu {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.yuni .card img {
+	position: absolute;
+	bottom: 0;
+	left: 30% !important;
+	translate: translateX(-50%);
+	height: 350px;
+	transition: 0.5s;
+}
+
+.yuni .card:hover img {
+	left: 45% !important;
+	height: 430px;
+}
+
+.sojin .card img {
+	position: absolute;
+	bottom: 0;
+	left: 30% !important;
+	translate: translateX(-50%);
+	height: 350px;
+	transition: 0.5s;
+}
+
+.sojin .card:hover img {
+	left: 45% !important;
+	height: 430px;
+}
+
+.shimsu .card img {
+	position: absolute;
+	bottom: 0;
+	left: 30%;
+	translate: translateX(-50%);
+	height: 300px;
+	transition: 0.5s;
+}
+
+.shimsu .card:hover img {
+	left: 45%;
+	height: 430px;
+}
+
+.shimsu .card .content {
+	position: relative;
+	width: 50%;
+	left: 20%;
+	padding: 20px 20px 20px 40px;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.5s;
+}
+
+.shimsu .card:hover .content {
+	left: 0;
+	opacity: 1;
+	visibility: visible;
+}
+
+.shimsu .card .content h2 {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 2.2em;
+	line-height: 1em;
+}
+
+.shimsu .card .content p {
+	color: #fff;
+}
+
+.shimsu .card .content a {
+	position: relative;
+	color: #000;
+	background: #fff;
+	display: inline-block;
+	padding: 10px 20px;
+	margin-top: 10px;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.laptop {
+	width: 100%;
+	max-width: 1200px;
+	position: relative;
+}
+
+.laptop img {
+	width: 100%;
+}
+
+.laptop iframe {
+	position: absolute;
+	width: 68.6%;
+	height: 82.3%;
+	background: #000;
+	top: 7.1%;
+	left: 16.8%;
+}
+
+.text-section {
+	text-align: justify;
+}
+
+footer {
+	position: relative;
+	width: 100%;
+	height: auto;
+	padding: 50px 70px;
+	background: #4a40dc;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+footer .container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+footer .container .sec {
+	margin-right: 30px;
+}
+
+footer .container .sec.aboutus {
+	width: 40%;
+}
+
+footer .container h2 {
+	position: relative;
+	color: #fff;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
+
+footer .container h2:before {
+	content: "";
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	width: 50px;
+	height: 2px;
+	background: #f00;
+}
+
+footer p {
+	color: #fff;
+}
+
+.sci {
+	margin-top: 20px;
+	display: flex;
+    margin-left: -40px;
+}
+
+.sci li {
+	list-style: none;
+}
+
+.sci li a {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background: #222;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 10px;
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+.sci li a:hover {
+	background: #f00;
+}
+
+.sci li a .fa {
+	color: #fff;
+	font-size: 20px;
+}
+
+.quickLinks {
+	position: relative;
+	width: 25%;
+}
+
+.quickLinks ul li {
+	list-style: none;
+    margin-left: -40px;
+}
+
+.quickLinks ul li a {
+	color: #fff;
+	text-decoration: none;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.quickLinks ul li a:hover {
+	color: #fff;
+}
+
+.contact ul li a:hover {
+	color: #fff;
+}
+
+.contact {
+	width: calc(35% - 60px);
+	margin-right: 0 !important;
+}
+
+.contact .info {
+	position: relative;
+}
+
+.contact .info li {
+	display: flex !important;
+	max-width: 60px;
+    margin-left: -40px;
+}
+
+.contact .info li span:nth-child(1) {
+	color: white;
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.contact .info li span {
+	color: #fff;
+}
+
+.contact .info li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+#btnScrollToTop {
+	margin: auto!important;
+}
+
+@media (max-width: 991px) {
+
+	#btnScrollToTop {
+		position: fixed;
+		right: 20px;
+		bottom: 20px;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		background: #6156f9;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+		color: #fff;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.navbar {
+		background: #fff;
+	}
+
+	.navbar-brand {
+		margin-right: 0 !important;
+	}
+
+	.navbar .navbar-brand,
+	.navbar .nav-link {
+		color: #555;
+	}
+
+	.navbar-brand {
+		font-size: 16px !important;
+	}
+
+	.logoheader {
+		width: 345px;
+		margin-top: -50px;
+	}
+
+	.text-head {
+		padding-left: 20px !important;
+	}
+
+	.headshape {
+		background-image: none !important;
+	}
+
+	.headshape img {
+		display: none;
+	}
+
+	.profil {
+		text-align: justify;
+	}
+
+	.profil h1 {
+		text-align: center;
+	}
+
+	.shimsu .card .content {
+		position: relative;
+		width: 100%;
+		left: 20%;
+		padding: 20px 20px 20px 40px;
+		opacity: 0;
+		visibility: hidden;
+		transition: 0.5s;
+	}
+
+	.shimsu .card {
+		width: auto;
+		max-width: 300px;
+		align-items: flex-start;
+	}
+
+	.shimsu .card:hover {
+		height: 600px;
+	}
+
+	.shimsu .card:hover img {
+		left: 25%;
+		height: 260px;
+	}
+
+	.yuni .card:hover img {
+		left: 25% !important;
+		height: 260px;
+	}
+
+	.sojin .card:hover img {
+		left: 25% !important;
+		height: 260px;
+	}
+
+	#sekapursirih {
+		margin-left: 0 !important;
+	}
+
+	footer {
+		padding: 40px;
+	}
+
+	footer .container {
+		flex-direction: column;
+	}
+
+	footer .container .sec {
+		margin-right: 0;
+		margin-bottom: 40px;
+	}
+
+	footer .container .sec.aboutus,
+	.quickLinks,
+	.contact {
+		width: 100%;
+	}
+
+}
+
+@media (max-width: 720px) {
+	.text-section h1 {
+		text-align: center;
+	}
+
+	.text-section img {
+		margin-bottom: 15px;
+	}
+	h1 {
+		font-size: 30px !important;
+	}
+
+	.text-head {
+		padding-left: 30px;
+		margin-top: 30px !important;
+		text-align: center;
+	}
+
+	span {
+		font-weight: bold;
+		font-size: 44px;
+	}
+
+	.text-head h2 {
+		font-family: "Poppins";
+		font-size: 30px;
+	}
+
+	.shimsu .card {
+		width: auto;
+		max-width: 350px;
+		align-items: flex-start;
+	}
+
+	.shimsu {
+		flex-direction: column;
+	}
+
+	.shimsu .card img {
+		position: absolute;
+		bottom: 0;
+		left: 25%;
+		translate: translateX(-50%);
+		height: 260px;
+		transition: 0.5s;
+	}
+
+	.yuni .card img {
+		position: absolute;
+		bottom: 0;
+		left: 25% !important;
+		translate: translateX(-50%);
+		height: 260px;
+		transition: 0.5s;
+	}
+
+	.sojin .card img {
+		position: absolute;
+		bottom: 0;
+		left: 25% !important;
+		translate: translateX(-50%);
+		height: 260px;
+		transition: 0.5s;
+	}
+}
