@@ -8,7 +8,7 @@ $nama   = $cek->nama_lengkap;
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title><?php echo $judul_web; ?> | Admin <?= $nama ?> </title>
+  <title><?php echo $judul_web; ?> | <?= $nama ?> </title>
   <base href="<?php echo base_url(); ?>" />
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">

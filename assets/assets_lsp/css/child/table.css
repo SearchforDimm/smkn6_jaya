@@ -448,3 +448,10 @@ th:hover {
   font-size: 22px;
   color: #333;
 }
+
+@media screen and (max-width: 1100px) {
+  .content-mt {
+    display: flex;
+    flex-direction: column;
+  }
+}

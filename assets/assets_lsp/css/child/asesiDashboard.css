@@ -1,0 +1,141 @@
+.pengumuman-info-wrapper {
+  width: 100%;
+  position: relative;
+}
+.pengumuman-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+h4 {
+  color: #333;
+}
+.pengumuman-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pengumuman-body {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 10px;
+}
+.pengumuman-green {
+  background-color: #049004;
+}
+.pengumuman-red {
+  background-color: rgb(178, 5, 5);
+}
+.pengumuman-blue {
+  background-color: #3a57e8;
+}
+.card-header-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 50%;
+  border: 1.5px solid #3a57e8;
+  transition: 0.3s all ease;
+}
+.card-header-button:hover {
+  background-color: #3a57e8;
+  color: #fff;
+}
+.progress-form-2-apl-wrap {
+  width: 100%;
+  position: relative;
+}
+.progress-form-2-apl {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.progress-form-2-header {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar-wrap {
+  width: 100%;
+  background-color: rgb(214, 214, 214);
+  border-radius: 10px;
+}
+.progress-bar {
+  background-color: #3a57e8;
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.progress-form-2-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.download-information-wrapper {
+  width: 100%;
+  position: relative;
+  margin-top: 130px;
+  margin-bottom: 130px;
+}
+.download-information {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.tombol-aksi {
+  border-radius: 10px !important;
+  width: 200px !important;
+}
+
+.chat-wrapper {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-top: 290px;
+}
+.chat-box-left {
+  width: 70%;
+}
+.online-chat {
+  width: 30%;
+}
+
+.card-chat {
+  border-radius: 10px;
+}
+.chat-box {
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1100px) {
+  .online-chat {
+    display: none;
+  }
+  .chat-box-left {
+    width: 100%;
+  }
+}

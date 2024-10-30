@@ -2,15 +2,14 @@
 $cek    = $user;
 $nama   = $cek->nama_lengkap;
 ?>
-
-<!-- <footer class="main-footer">
+<!-- 
+<footer class="main-footer">
   <div class="footer-left">
     Copyright &copy; <?php echo date('Y'); ?> <?= $nama ?>. Created with passion by Dimas & Muzhaffar.
   </div>
-</footer> -->
+</footer>
 </div>
-</div>
-
+</div> -->
 
 <!-- General JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
