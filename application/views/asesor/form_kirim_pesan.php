@@ -34,7 +34,7 @@ base_url('');
                     </span>
 
                     <div class="button">
-                        <a href="<?php echo base_url(uri: 'panel_admin'); ?>"> Back </a>
+                        <a href="<?php echo base_url(uri: 'panel_asesor/kirim_pesan'); ?>"> Back </a>
                     </div>
                 </div>
             </div>

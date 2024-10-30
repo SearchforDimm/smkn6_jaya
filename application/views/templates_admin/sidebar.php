@@ -65,6 +65,17 @@ $sub_menu3 = strtolower($this->uri->segment(3));
             </ul>
             <ul class="menu_item">
               <div class="menu_title flex">
+                <span class="title">Ujian</span>
+                <span class="line"></span>
+              </div>
+              <li class="item">
+                <a href="<?php echo base_url('panel_admin/bank_soal') ?>" class="link flex">
+                  <i class='bx bx-book-bookmark'></i>
+                  <span>Bank Soal</span>
+                </a>
+            </ul>
+            <ul class="menu_item">
+              <div class="menu_title flex">
                 <span class="title">Data Master</span>
                 <span class="line"></span>
               </div>

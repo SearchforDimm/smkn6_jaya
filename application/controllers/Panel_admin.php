@@ -274,6 +274,23 @@ class Panel_admin extends CI_Controller
 		}
 	}
 
+	public function bank_soal()
+	{
+		$sess = $this->session->userdata('id_admin');
+		if ($sess == NULL) {
+			redirect('panel_admin/log_in');
+		} else {
+			$data = array(
+				'user'		=> $this->admin->base('bio', $this->session->userdata('id_admin')),
+				'judul_web'	=> "Admin Settings"
+			);
+
+			$this->load->view('templates_admin/header', $data);
+			$this->load->view('templates_admin/sidebar', $data);
+			$this->load->view('admin/bank_soal', $data);
+			$this->load->view('templates_admin/footer');
+		}
+	}
 	public function verifikasi($aksi = '', $id = '')
 	{
 		$sess = $this->session->userdata('id_admin');

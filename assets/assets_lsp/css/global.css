@@ -22,9 +22,9 @@ body {
   cursor: pointer;
 }
 .nav_image img {
-  width: 30px;
-  height: 40px;
+  width: 50px;
   aspect-ratio: 1/1;
+  border-radius: 50%;
 }
 
 .nav_image i {
@@ -437,7 +437,8 @@ body {
   color: #333;
 }
 .user-info img {
-  width: 30px;
+  width: 50px;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   margin-right: 15px;
 }

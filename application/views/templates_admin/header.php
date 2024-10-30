@@ -27,5 +27,6 @@ $nama   = $cek->nama_lengkap;
   <link rel="stylesheet" href="assets/assets_lsp/css/child/table.css">
   <link rel="stylesheet" href="assets/assets_lsp/css/child/formMessage.css">
   <link rel="stylesheet" href="assets/assets_lsp/css/child/print.css">
+  <link rel="stylesheet" href="assets/assets_lsp/css/child/bank.css">
 
 </head>

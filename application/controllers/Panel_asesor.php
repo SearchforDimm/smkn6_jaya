@@ -185,9 +185,10 @@ class Panel_asesor extends CI_Controller
 				'judul_web'	=> "UBAH PASSWORD"
 			);
 
-			$this->load->view('asesor/header', $data);
+			$this->load->view('templates_asesor/header', $data);
+			$this->load->view('templates_asesor/sidebar', $data);
 			$this->load->view('asesor/ubah_pass', $data);
-			$this->load->view('asesor/footer');
+			$this->load->view('templates_asesor/footer');
 
 			if (isset($_POST['btnupdate2'])) {
 				$send = array(

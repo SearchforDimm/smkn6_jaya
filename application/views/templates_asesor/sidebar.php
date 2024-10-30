@@ -121,7 +121,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
             <input type="text" placeholder="Search..." />
           </div>
           <span class="nav_image nav-absolute" onclick="toggleProfile()">
-            <img src="<?= 'assets/assets_lsp/images/' . $foto ?>" alt="logo_img" />
+            <img src="img/asesor/<?= $foto ?>" alt="logo_img" class="pp-radius" />
             <div class="nav-text">
               <p class="name-bold">
                 <?php echo ucwords($nama); ?>
@@ -135,7 +135,8 @@ $sub_menu3 = strtolower($this->uri->segment(3));
           <div class="dropdown-profile-wrap">
             <div class="dropdown-profile">
               <div class="user-info">
-                <img src="<?= 'assets/assets_lsp/images/' . $foto ?>" alt="logo_img" />
+                <img src="img/asesor/<?= $foto ?>" alt="logo_img" class="pp-radius" />
+
                 <div class="nav-text">
                   <p class="name-bold">
                     <?php echo ucwords($nama); ?>

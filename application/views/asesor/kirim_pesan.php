@@ -40,10 +40,10 @@ if (array_key_exists($jurusan, $jurusan_data)) {
             <main class="main">
                 <div class="welcome-container">
                     <h1>Hello, <?php echo ucwords($nama); ?>!</h1>
-                    <p>Ini Adalah Laman Verifikasi</p>
+                    <p>Ini Adalah Laman Kirim Pesan</p>
                     <div class="welcome-tab">
                         <span>
-                            <h3 class="flex" style="gap:3px">Home<i class="bx bx-chevrons-right" style="cursor:text"></i> Kelulusan</h3>
+                            <h3 class="flex" style="gap:3px">Home<i class="bx bx-chevrons-right" style="cursor:text"></i> Kirim Pesan</h3>
                         </span>
 
                         <div class="button">
