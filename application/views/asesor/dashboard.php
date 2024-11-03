@@ -77,7 +77,7 @@ foreach ($countpkm as $berhitung) {
         <p>Welcome to LSP SMKN 6 Website.</p>
     </main>
 
-    <div class="content-wrapper-all table-container">
+    < class="content-wrapper-all table-container">
       <div class="card-siswa-wrapper">
 
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -372,7 +372,3 @@ foreach ($countpkm as $berhitung) {
 
 
       </div>
-    </div>
-
-  </section>
-</div>

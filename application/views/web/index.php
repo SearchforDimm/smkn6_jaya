@@ -11,225 +11,372 @@ $soa = $this->db->get('tbl_siswa');
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title><?= $user['nama_lengkap']; ?></title>
-    <base href="<?= base_url(); ?>" />
-	<!--<script src="<?= base_url('js/modernizr.js') ?>"></script>-->
-    <!-- CSS files -->
-	<link rel="icon" href="<?= base_url('assets/dist/img/logo.png')?>">
-    <link href="<?= base_url('assets/dist/css/style.css') ?>" rel="stylesheet" />
-    <link rel="stylesheet" href="<?= base_url('assets/dist/css/bootstrap.css')?>" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-	<style>
-        
-.headshape {
-	background-image: url("<?= base_url('assets/dist/img/Bg Shape.png')?>");
-	background-repeat: no-repeat;
-	background-position-x: 79px;
-	margin-top: -20px;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title><?= $user['nama_lengkap']; ?></title>
+  <base href="<?= base_url(); ?>" />
+  <!--<script src="<?= base_url('js/modernizr.js') ?>"></script>-->
+  <!-- CSS files -->
+  <link rel="icon" href="<?= base_url('assets/dist/img/logo.png') ?>">
+  <link href="<?= base_url('assets/dist/css/style.css') ?>" rel="stylesheet" />
+  <link rel="stylesheet" href="<?= base_url('assets/dist/css/bootstrap.css') ?>" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="<?= base_url('assets/assets_lsp/css/child/homepage.css') ?>" rel="stylesheet" />
 
-.shape {
-  background-image: url("<?= base_url('assets/dist/img/Group 1423.png')?>");
-  background-repeat: no-repeat;
-}
+  <style>
+    .headshape {
+      background-image: url("<?= base_url('assets/dist/img/Bg Shape.png') ?>");
+      background-repeat: no-repeat;
+      background-position-x: 79px;
+      position: absolute;
+      top: -60px;
+      right: 0;
+      z-index: -9999;
+    }
 
-.text-section {
-	background-image: url("<?= base_url('assets/dist/img/Group 182.png')?>");
-}
-    </style>
+    .shape {
+      background-image: url("<?= base_url('assets/dist/img/Group 1423.png') ?>");
+      background-repeat: no-repeat;
+    }
+
+    .text-section {
+      background-image: url("<?= base_url('assets/dist/img/Group 182.png') ?>");
+    }
+  </style>
 </head>
 
-<body class="antialiased">
-    <div class="page">
-    <div class="content">
-	  	<nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container"><a href="<?= base_url()?>" class="navbar-brand text-uppercase font-weight-bold"><img src="<?= base_url('assets/dist/img/logo.png')?>" alt="" style="width: 48px;" /> LSP SMKN 6 JAKARTA</a>
-            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
-            
-            <div id="navbarSupportedContent" class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="#top" class="nav-link text-uppercase font-weight-bold">Beranda</a></li>
-                    <li class="nav-item active"><a href="#tahapan" class="nav-link text-uppercase font-weight-bold">Tahapan</a></li>
-                    <li class="nav-item"><a href="#faq" class="nav-link text-uppercase font-weight-bold">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body>
 
-<div class="" id="top"></div>    
-<div class="container-fluid headsection">
-      <div class="row">
-        <div class="col-md-6 text-head">
-          <h2 style="margin-top: 150px; @media only screen and (max-width: 720px) {margin-top: 0}">Pendaftaran<span> Sertifikasi Online</span></h2>
-          <h2>LSP <span> SMKN 6 JAKARTA</span></h2>
-          <p></p>
+
+
+  <nav class="navbar fixed-top navbar-expandr">
+    <div class="nav-wrapper container-fw ">
+      <div class="logo-nav">
+        <img src="<?= base_url('assets/dist/img/logo.png') ?>" alt="logo-img" />
+        <p class="logo-text">LSP SMKN 6 JAKARTA</p>
+      </div>
+      <div class="menu-nav">
+        <a href="#top" class="nav-link">Beranda</a>
+        <a href="#tahapan" class="nav-link">Tahapan</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="<?= base_url('about') ?>" class="nav-link">About Us</a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-wrapper" style="margin-bottom: 200px">
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class=" text-head">
+          <h2 style="margin-top: 150px; @media only screen and (max-width: 720px) {margin-top: 0}">Pendaftaran Sertifikasi Online </h2>
+          <h2> <span> LSP SMKN 6 JAKARTA</span></h2>
+          <p>SMKN 6 JAKARTA membuka pendaftaran peserta sertifikasi online tahun ajaran 2024-2025.</p>
           <?php if ($web_ppdb->status_ppdb == 'buka') { ?>
-                            <span>
-                            <a style="font-size: 18px" href="<?= base_url('pendaftaran')?>" class="btn btn-primary btn-lg btn-daftar mb-2">DAFTAR ONLINE</a>
-                            <a style="font-size: 18px" href="<?= base_url('logcs')?>" class="btn btn-primary btn-lg btn-daftar mb-2"><?php if($ceks == '') {echo "MASUK";}else{echo "PANEL";}?></a>
-                                <br>
-                            </span>
-                        <?php } else { ?>
-                            <span class="skills">
-                            </span>
-                           <br>
+            <span class="daftar-button">
+              <a style="font-size: 18px" href="<?= base_url('pendaftaran') ?>" class="tombol-aksi tombol-print">DAFTAR ONLINE</a>
+              <a style="font-size: 18px" href="<?= base_url('logcs') ?>" class="tombol-aksi tombol-print">
+                <?php if ($ceks == '') {
+                  echo "MASUK";
+                } else {
+                  echo "PANEL";
+                } ?></a>
+              <br>
+            </span>
+          <?php } else { ?>
+            <span class="skills">
+            </span>
+            <br>
 
-                            <span>
-                                <a href="javascript:void(0);" class="btn btn-danger btn-lg" style="font-family:'Poppins'; border-radius:20px;"><i class="fa fa-times"></i> &nbsp;<b>Pendaftaran Sertifikasi Online DITUTUP</b></a>
-                                <br>
-                            </span>
-                        <?php } ?>
+            <span>
+              <a href="javascript:void(0);" class="btn btn-danger btn-lg" style="font-family:'Poppins'; border-radius:20px;"><i class="fa fa-times"></i> &nbsp;<b>Pendaftaran Sertifikasi Online DITUTUP</b></a>
+              <br>
+            </span>
+          <?php } ?>
         </div>
-        <div class="col-md-6 d-flex justify-content-center align-items-center headshape">
-            <div data-aos="fade-up">
-            <img src="<?= base_url('assets/dist/img/logo-smkn6jakarta-1101x1500.png') ?>" width="300px" alt="" class="img-fluid" />
+      </div>
+      <div class="hero-right headshape">
+        <div data-aos="fade-up">
+          <img src="<?= base_url('assets/dist/img/logo-smkn6jakarta-1101x1500.png') ?>" alt="" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="" id="tahapan"></div>
+  <div class="container-fluid container-card tahapan-wrapper" data-aos="zoom-in">
+    <div class="tahapan-row container-fw">
+      <div class="card card-tahapan">
+        <div class="box">
+          <div class="content">
+            <h2>01</h2>
+            <h4>Mengisi Form FR-APL-01</h4>
+            <p>Mendaftar dan mengisi form FR-APL-01 secara online melalui tombol daftar yang tertera diatas.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card card-tahapan">
+        <div class="box">
+          <div class="content">
+            <h2>02</h2>
+            <h4>Mengisi Form FR-APL-02</h4>
+            <p>Mengisi form FR-APL-02 setelah mengisi form FR-APL-01(mendaftar).
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card card-tahapan">
+        <div class="box">
+          <div class="content">
+            <h2>03</h2>
+            <h4>Menunggu Konfirmasi</h4>
+            <p>Menunggu proses konfirmasi dari admin LSP SMKN 6 JAKARTA untuk dinyatakan lolos/tidak.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card card-tahapan">
+        <div class="box">
+          <div class="content">
+            <h2>04</h2>
+            <h4>Datang ke tempat LSP</h4>
+            <p>Datang ke tempat LSP SMKN 6 JAKARTA untuk ke tahap asesmen.
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <div class="" id="tahapan"></div>
-    <div class="container-fluid container-card mt-5" data-aos="zoom-in">
+  </div>
+
+
+  <div class="faq-wrapper container-fw" id="faq">
+    <div class="faq-hero">
+      <h1>Frequently asked question</h1>
+      <p>Tanya Jawab Seputar Sertifikasi di LSP SMKN 6
+      </p>
+    </div>
+    <div class="faq-content">
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" data-accordion="trigger">
+            <span>Apa itu LSP SMKN 6?</span>
+            <span class="accordion-icon">
+              <svg class="vertical-cross" viewBox="0 0 24 24">
+                <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="2" />
+                <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </span>
+          </button>
+          <div class="accordion-content" data-accordion="content">
+            <div class="contents">
+              <span>LSP (Lembaga Sertifikasi Profesi) SMKN 6 adalah lembaga yang bertugas memberikan sertifikasi kompetensi kepada siswa, khususnya yang bersekolah di SMKN 6, agar memiliki sertifikasi resmi di bidang keahlian tertentu. Sertifikasi ini diakui secara nasional dan menjadi bukti kompetensi siswa di dunia kerja.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" data-accordion="trigger">
+            <span>Apa saja program sertifikasi yang ditawarkan di LSP SMKN 6?</span>
+            <span class="accordion-icon">
+              <svg class="vertical-cross" viewBox="0 0 24 24">
+                <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="2" />
+                <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </span>
+          </button>
+          <div class="accordion-content" data-accordion="content">
+            <div class="contents">
+              <span>LSP SMKN 6 menawarkan sertifikasi di berbagai bidang sesuai jurusan yang ada di sekolah, seperti Teknik Komputer dan Jaringan, Multimedia, Akuntansi, dan lain-lain. Setiap program bertujuan untuk memastikan siswa memiliki keterampilan sesuai standar industri.
+
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" data-accordion="trigger">
+            <span> Bagaimana cara mendaftar sertifikasi di LSP SMKN 6?</span>
+            <span class="accordion-icon">
+              <svg class="vertical-cross" viewBox="0 0 24 24">
+                <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="2" />
+                <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </span>
+          </button>
+          <div class="accordion-content" data-accordion="content">
+            <div class="contents">
+              <span>Untuk mendaftar, siswa perlu mengunjungi halaman pendaftaran di website LSP SMKN 6, melengkapi formulir pendaftaran online, dan mengikuti prosedur yang tertera. Tim LSP akan menghubungi siswa untuk informasi lebih lanjut tentang tahapan sertifikasi.
+
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" data-accordion="trigger">
+            <span>Apakah sertifikasi ini memiliki masa berlaku?</span>
+            <span class="accordion-icon">
+              <svg class="vertical-cross" viewBox="0 0 24 24">
+                <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="2" />
+                <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </span>
+          </button>
+          <div class="accordion-content" data-accordion="content">
+            <div class="contents">
+              <span>Ya, sebagian besar sertifikasi memiliki masa berlaku yang bervariasi tergantung pada jenis sertifikasi dan bidang keahlian. Rincian masa berlaku akan tercantum pada sertifikat atau bisa ditanyakan langsung kepada pihak LSP SMKN 6.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" data-accordion="trigger">
+            <span>Apa manfaat dari memiliki sertifikasi LSP bagi siswa?</span>
+            <span class="accordion-icon">
+              <svg class="vertical-cross" viewBox="0 0 24 24">
+                <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="2" />
+                <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </span>
+          </button>
+          <div class="accordion-content" data-accordion="content">
+            <div class="contents">
+              <span>Sertifikasi LSP memberikan bukti resmi bahwa siswa memiliki kompetensi di bidang tertentu, yang diakui oleh dunia industri dan pendidikan. Sertifikasi ini dapat meningkatkan peluang kerja dan memberikan nilai tambah dalam melanjutkan pendidikan.
+
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" data-accordion="trigger">
+            <span>Bagaimana cara menghubungi LSP SMKN 6 untuk informasi lebih lanjut?</span>
+            <span class="accordion-icon">
+              <svg class="vertical-cross" viewBox="0 0 24 24">
+                <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="2" />
+                <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </span>
+          </button>
+          <div class="accordion-content" data-accordion="content">
+            <div class="contents">
+              Untuk informasi lebih lanjut, Anda dapat mengunjungi halaman "Kontak Kami" di website, di mana tercantum nomor telepon, email, dan alamat kantor LSP SMKN 6. Pihak LSP juga tersedia untuk menjawab pertanyaan melalui media sosial resmi sekolah.
+
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
       <div class="row">
-        <div class="col-md-3 col-lg-3 col-sm-12">
-          <div class="card">
-            <div class="box">
-              <div class="content">
-                <h2>01</h2>
-                <h4>Mengisi Form FR-APL-01</h4>
-                <p>Mendaftar dan mengisi form FR-APL-01 secara online melalui tombol daftar yang tertera diatas.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">
+            LSP SMKN 6 Jakarta adalah lembaga sertifikasi profesi yang bertujuan untuk mempersiapkan siswa SMKN 6 dalam menghadapi dunia kerja melalui uji kompetensi bersertifikat. Sebagai bagian dari program sertifikasi resmi yang terlisensi oleh Badan Nasional Sertifikasi Profesi (BNSP), LSP SMKN 6 memberikan sertifikasi yang diakui secara nasional, sesuai dengan standar industri. Melalui LSP, siswa memperoleh bukti keterampilan dan kompetensi yang meningkatkan daya saing mereka di dunia kerja dan pendidikan</p>
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-12">
-          <div class="card">
-            <div class="box">
-              <div class="content">
-                <h2>02</h2>
-                <h4>Mengisi Form FR-APL-02</h4>
-                <p>Mengisi form FR-APL-02 setelah mengisi form FR-APL-01(mendaftar).
-                </p>
-              </div>
-            </div>
-          </div>
+
+        <div class="col-xs-6 col-md-3 border-left-footer">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="#top">Beranda</a></li>
+            <li><a href="#tahapan">Tahapan</a></li>
+            <li><a href="#faq">Faq</a></li>
+            <li><a href="#faq">About Us</a></li>
+          </ul>
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-12">
-          <div class="card">
-            <div class="box">
-              <div class="content">
-                <h2>03</h2>
-                <h4>Menunggu Konfirmasi</h4>
-                <p>Menunggu proses konfirmasi dari admin LSP SMKN 6 JAKARTA untuk dinyatakan lolos/tidak.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-lg-3 col-sm-12">
-          <div class="card">
-            <div class="box">
-              <div class="content">
-                <h2>04</h2>
-                <h4>Datang ke tempat LSP</h4>
-                <p>Datang ke tempat LSP SMKN 6 JAKARTA untuk ke tahap asesmen.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+      <hr>
+    </div>
+    <div class=" copyright-footer">
+      <div class="main-footer">
+        <p class="copyright-text"></p> Copyright &copy; <?php echo date('Y'); ?> SMKN 6 Jakarta. Created with passion by Dimas Rifqi & Ahmad Muzhaffar.
+        </p>
       </div>
     </div>
+  </footer>
 
-    <div class="" id="faq"></div>
-    <div class="container-fluid faqshape" style="margin-top:100px;">
-      <div class="row" style="margin-bottom: 50px;">
-      <div class="col-md-1 col-sm-12 col-lg-1"></div>
-      <div class="col-md-4 col-sm-12 col-lg-4" data-aos="fade-right" class="img-fluid" alt="Responsive image">
-        <img src="<?= base_url('assets/dist/img/Group 1423.png')?>" alt="Responsive image" class="img-fluid">
-      </div>
-      <div class="col-md-1 col-lg-1 col-sm-12">
-      </div>
-        <div class="col-sm-12 col-md-5 col-lg-5 mt-3 center faq" data-aos="fade-left">
-					<div id="accordion">
-						<div class="accordion-card">
-							<div class="accordion-card__header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								<h5 class="mb-0">
-									Bagaimana cara mendaftar sertifikasi online?
-								</h5>
-								<i class="fa fa-caret-down drop-icon"></i>
-							</div>					  
-							<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-								<div class="accordion-card__body">
-								Cara untuk mendaftar sertifikasi online di LSP SMKN 6 JAKARTA cukup tekan tombol daftar yang ada diatas lalu nanti anda akan diarahkan untuk mengisi form pendaftaran, setelah itu anda akan tertuju ke halaman form asesmen mandiri untuk menilai diri anda sendiri mampukah untuk menyelesaikan sebuah kompetensi tersebut. Setelah terdaftar nantinya anda akan diarahkan ke halaman dashboard asesi yang nantinya akan dikirimkan pengumuman lolos/tidak serta pesan untuk proses asesmen berikutnya.
-								</div>
-							</div>
-						</div>
-						<div class="accordion-card">
-							<div class="accordion-card__header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								<h5 class="mb-0">
-									Bagaimana apabila lupa password?
-								</h5>
-								<i class="fa fa-caret-down drop-icon"></i>
-							</div>
-							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-								<div class="accordion-card__body">
-								  Saat ini belum ada fitur untuk mengubah password. Tetapi untuk mencegah terjadinya lupa password, saat berada di halaman dashboard asesi catat nomor pendaftaran dan NISN untuk nanti melakukan login.
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-        <div class="col-md-1 col-sm-12 col-lg-1"></div>
-    </div>
-</div>
+  <button id="btnScrollToTop">
+    <i class="material-icons">arrow_upward</i>
+  </button>
+  <!-- Libs JS -->
+  <script src="<?= base_url(); ?>assets/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url(); ?>assets/dist/libs/jquery/dist/jquery.slim.min.js"></script>
+  <script type="text/javascript" src="<?= base_url(); ?>assets/dist/js/chocolat.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
+  <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 
-    
-<button id="btnScrollToTop">
-				<i class="material-icons">arrow_upward</i>
-			</button>
-<!-- Libs JS -->
-<script src="<?= base_url(); ?>assets/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="<?= base_url(); ?>assets/dist/libs/jquery/dist/jquery.slim.min.js"></script>
-<script type="text/javascript" src="<?= base_url(); ?>assets/dist/js/chocolat.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
-<script src="https://apps.elfsight.com/p/platform.js" defer></script>
 
-<!-- Tabler Core -->
-<script>
+  <script type="text/javascript">
+    function toggleMenu() {
+      const menu = document.querySelector('.menu-nav');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+  </script>
+  <script type="text/javascript">
+    document.querySelectorAll('[data-accordion="trigger"]').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const content = trigger.nextElementSibling;
+        const isOpen = content.getAttribute('data-open') !== null;
+
+        document.querySelectorAll('[data-accordion="content"]').forEach(c => c.removeAttribute('data-open'));
+        document.querySelectorAll('.vertical-cross').forEach(icon => icon.style.transform = "scaleY(1)");
+
+        if (!isOpen) {
+          content.setAttribute('data-open', '');
+          trigger.querySelector('.vertical-cross').style.transform = "scaleY(0)";
+        }
+      });
+    });
+  </script>
+  <!-- Tabler Core -->
+  <script>
     document.body.style.display = "block"
-</script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
 
     gsap.registerPlugin(TextPlugin);
-    gsap.from(".text-head h2 span", {duration: 2, text: ""})
-    gsap.to(".text-head p", {duration: 3, text: "SMKN 6 JAKARTA membuka pendaftaran peserta sertifikasi online tahun ajaran 2024-2025."})
+    gsap.from(".text-head h2 span", {
+      duration: 2,
+      text: ""
+    })
+    gsap.to(".text-head p", {
+      duration: 3,
+      text: "SMKN 6 JAKARTA membuka pendaftaran peserta sertifikasi online tahun ajaran 2024-2025."
+    })
 
-$(function () {
-    $(window).on('scroll', function () {
-        if ( $(window).scrollTop() > 10 ) {
-            $('.navbar').addClass('active');
+    $(function() {
+      $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 10) {
+          $('.navbar').addClass('active');
         } else {
-            $('.navbar').removeClass('active');
+          $('.navbar').removeClass('active');
         }
+      });
     });
-});
 
-const btnScrollToTop = document.querySelector('#btnScrollToTop');
+    const btnScrollToTop = document.querySelector('#btnScrollToTop');
 
-btnScrollToTop.addEventListener("click", function (){
-  window.scrollTo(0,0);
-});
+    btnScrollToTop.addEventListener("click", function() {
+      window.scrollTo(0, 0);
+    });
   </script>
 </body>
 

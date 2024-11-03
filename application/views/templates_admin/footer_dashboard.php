@@ -3,15 +3,18 @@ $cek    = $user;
 $nama   = $cek->nama_lengkap;
 ?>
 
-<!-- </div>
-</div>
-</body>
 
-<footer class="main-footer" >
+<footer class="main-footer">
   <div class="footer-left">
-    Copyright &copy; <?php echo date('Y'); ?> <?= $nama ?>. Created with passion by Dimas & Muzhaffar.
+    Copyright &copy; <?php echo date('Y'); ?> SMKN 6 Jakarta. Created with passion by Dimas Rifqi & Ahmad Muzhaffar.
   </div>
-</footer> -->
+</footer>
+
+</div>
+</section>
+</div>
+</div>
+</div>
 
 <?php
 

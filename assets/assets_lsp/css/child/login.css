@@ -149,3 +149,27 @@ button:focus {
   background-position: center;
   background-size: cover;
 }
+
+@media screen and (max-width: 1024px) {
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .right-main {
+    display: none;
+  }
+  .left-main {
+    width: 100%;
+  }
+}
+
+.policy {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  color: #3a57e8;
+}

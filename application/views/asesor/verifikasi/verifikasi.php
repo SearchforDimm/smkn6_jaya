@@ -123,129 +123,127 @@ if (array_key_exists($jurusan, $jurusan_data)) {
                 <div id="pagination"></div>
                 <div id="showing-info"></div>
             </div>
-        </section>
-    </div>
-<?php } ?>
+        <?php } ?>
 
-<script type="text/javascript">
-    let currentPage = 1;
-    let rowsPerPage = 10;
+        <script type="text/javascript">
+            let currentPage = 1;
+            let rowsPerPage = 10;
 
-    document.getElementById('entries').addEventListener('change', function() {
-        rowsPerPage = parseInt(this.value);
-        currentPage = 1;
-        paginateTable();
-    });
-
-    function paginateTable() {
-        const table = document.getElementById('data-table');
-        const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-        const totalRows = rows.length;
-        const totalPages = Math.ceil(totalRows / rowsPerPage);
-        const start = (currentPage - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-
-        // Display rows for current page
-        for (let i = 0; i < totalRows; i++) {
-            rows[i].style.display = (i >= start && i < end) ? '' : 'none';
-        }
-
-        // Update showing info
-        document.getElementById('showing-info').innerHTML = `Showing ${start + 1} to ${Math.min(end, totalRows)} of ${totalRows} entries`;
-
-        // Create pagination buttons
-        const pagination = document.getElementById('pagination');
-        pagination.innerHTML = '';
-        for (let i = 1; i <= totalPages; i++) {
-            const btn = document.createElement('button');
-            btn.innerHTML = i;
-            btn.classList.add('page-btn');
-            if (i === currentPage) {
-                btn.classList.add('active');
-            }
-            btn.onclick = function() {
-                currentPage = i;
+            document.getElementById('entries').addEventListener('change', function() {
+                rowsPerPage = parseInt(this.value);
+                currentPage = 1;
                 paginateTable();
+            });
+
+            function paginateTable() {
+                const table = document.getElementById('data-table');
+                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                const totalRows = rows.length;
+                const totalPages = Math.ceil(totalRows / rowsPerPage);
+                const start = (currentPage - 1) * rowsPerPage;
+                const end = start + rowsPerPage;
+
+                // Display rows for current page
+                for (let i = 0; i < totalRows; i++) {
+                    rows[i].style.display = (i >= start && i < end) ? '' : 'none';
+                }
+
+                // Update showing info
+                document.getElementById('showing-info').innerHTML = `Showing ${start + 1} to ${Math.min(end, totalRows)} of ${totalRows} entries`;
+
+                // Create pagination buttons
+                const pagination = document.getElementById('pagination');
+                pagination.innerHTML = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    const btn = document.createElement('button');
+                    btn.innerHTML = i;
+                    btn.classList.add('page-btn');
+                    if (i === currentPage) {
+                        btn.classList.add('active');
+                    }
+                    btn.onclick = function() {
+                        currentPage = i;
+                        paginateTable();
+                    };
+                    pagination.appendChild(btn);
+                }
+            }
+
+            function initializeTable() {
+                const headers = document.querySelectorAll('#data-table th');
+                headers.forEach((header, index) => {
+                    // Set the initial sort order to ascending ('asc')
+                    header.setAttribute('data-sort-order', 'asc');
+
+                    // Set a default sort icon (up arrow) on load for sortable columns
+                    if (header.onclick) {
+                        header.innerHTML = header.innerText + ' \u25B2'; // Up arrow
+                    }
+                });
+            }
+
+            function sortTable(columnIndex) {
+                const table = document.getElementById('data-table');
+                const headers = table.querySelectorAll('th');
+                const rows = Array.from(table.querySelectorAll('tbody tr'));
+
+                const currentHeader = headers[columnIndex];
+                const isAscending = currentHeader.getAttribute('data-sort-order') === 'asc';
+
+                headers.forEach((header, index) => {
+                    if (index !== columnIndex) {
+                        header.removeAttribute('data-sort-order');
+                        header.setAttribute('data-sort-order', 'asc');
+                        header.innerHTML = header.innerText.replace(/[\u25B2\u25BC]/g, '') + ' \u25B2'; // Reset other headers to ascending (up arrow)
+                    }
+                });
+
+                rows.sort((rowA, rowB) => {
+                    const cellA = rowA.querySelectorAll('td')[columnIndex].innerText;
+                    const cellB = rowB.querySelectorAll('td')[columnIndex].innerText;
+
+                    if (!isNaN(cellA) && !isNaN(cellB)) {
+                        return isAscending ? cellA - cellB : cellB - cellA;
+                    } else {
+                        return isAscending ?
+                            cellA.localeCompare(cellB) :
+                            cellB.localeCompare(cellA);
+                    }
+                });
+
+                const newSortOrder = isAscending ? 'desc' : 'asc';
+                currentHeader.setAttribute('data-sort-order', newSortOrder);
+
+                // Update the clicked header with the correct arrow icon
+                currentHeader.innerHTML = currentHeader.innerText.replace(/[\u25B2\u25BC]/g, '') + (newSortOrder === 'asc' ? ' \u25B2' : ' \u25BC'); // Toggle between up (▲) and down (▼) arrow
+
+                rows.forEach(row => table.querySelector('tbody').appendChild(row));
+            }
+
+            // Call the initializeTable function when the page loads
+            window.onload = function() {
+                initializeTable();
+                paginateTable(); // If you have pagination function, call it here as well
             };
-            pagination.appendChild(btn);
-        }
-    }
 
-    function initializeTable() {
-        const headers = document.querySelectorAll('#data-table th');
-        headers.forEach((header, index) => {
-            // Set the initial sort order to ascending ('asc')
-            header.setAttribute('data-sort-order', 'asc');
 
-            // Set a default sort icon (up arrow) on load for sortable columns
-            if (header.onclick) {
-                header.innerHTML = header.innerText + ' \u25B2'; // Up arrow
+            function searchTable() {
+                const searchTerm = document.getElementById('search').value.toLowerCase();
+                const rows = document.querySelectorAll('#data-table tbody tr');
+
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    const match = Array.from(cells).some(cell => cell.innerText.toLowerCase().includes(searchTerm));
+                    row.style.display = match ? '' : 'none';
+                });
             }
-        });
-    }
 
-    function sortTable(columnIndex) {
-        const table = document.getElementById('data-table');
-        const headers = table.querySelectorAll('th');
-        const rows = Array.from(table.querySelectorAll('tbody tr'));
-
-        const currentHeader = headers[columnIndex];
-        const isAscending = currentHeader.getAttribute('data-sort-order') === 'asc';
-
-        headers.forEach((header, index) => {
-            if (index !== columnIndex) {
-                header.removeAttribute('data-sort-order');
-                header.setAttribute('data-sort-order', 'asc');
-                header.innerHTML = header.innerText.replace(/[\u25B2\u25BC]/g, '') + ' \u25B2'; // Reset other headers to ascending (up arrow)
+            function thn() {
+                var thn = $('[name="thn"]').val();
+                window.location = "panel_asesor/verifikasi/thn/" + thn;
             }
-        });
 
-        rows.sort((rowA, rowB) => {
-            const cellA = rowA.querySelectorAll('td')[columnIndex].innerText;
-            const cellB = rowB.querySelectorAll('td')[columnIndex].innerText;
-
-            if (!isNaN(cellA) && !isNaN(cellB)) {
-                return isAscending ? cellA - cellB : cellB - cellA;
-            } else {
-                return isAscending ?
-                    cellA.localeCompare(cellB) :
-                    cellB.localeCompare(cellA);
-            }
-        });
-
-        const newSortOrder = isAscending ? 'desc' : 'asc';
-        currentHeader.setAttribute('data-sort-order', newSortOrder);
-
-        // Update the clicked header with the correct arrow icon
-        currentHeader.innerHTML = currentHeader.innerText.replace(/[\u25B2\u25BC]/g, '') + (newSortOrder === 'asc' ? ' \u25B2' : ' \u25BC'); // Toggle between up (▲) and down (▼) arrow
-
-        rows.forEach(row => table.querySelector('tbody').appendChild(row));
-    }
-
-    // Call the initializeTable function when the page loads
-    window.onload = function() {
-        initializeTable();
-        paginateTable(); // If you have pagination function, call it here as well
-    };
-
-
-    function searchTable() {
-        const searchTerm = document.getElementById('search').value.toLowerCase();
-        const rows = document.querySelectorAll('#data-table tbody tr');
-
-        rows.forEach(row => {
-            const cells = row.querySelectorAll('td');
-            const match = Array.from(cells).some(cell => cell.innerText.toLowerCase().includes(searchTerm));
-            row.style.display = match ? '' : 'none';
-        });
-    }
-
-    function thn() {
-        var thn = $('[name="thn"]').val();
-        window.location = "panel_asesor/verifikasi/thn/" + thn;
-    }
-
-    $('[name="thn"]').select2({
-        placeholder: "- Tahun -"
-    });
-</script>
+            $('[name="thn"]').select2({
+                placeholder: "- Tahun -"
+            });
+        </script>

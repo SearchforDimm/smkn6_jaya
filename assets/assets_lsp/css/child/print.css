@@ -52,10 +52,17 @@
   .print {
     display: flex;
     flex-direction: column;
-    align-items: start;
     gap: 40px;
   }
   .print-content {
-    width: 100%;
+    width: 100% !important;
+  }
+
+  .print-content .print-header {
+    height: 200px;
+  }
+  .print-content .print-header i {
+    font-size: 12rem;
+    color: #fff;
   }
 }

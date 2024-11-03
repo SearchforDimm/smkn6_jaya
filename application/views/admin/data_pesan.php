@@ -108,5 +108,3 @@ base_url('');
             <div id="pagination"></div>
             <div id="showing-info"></div>
         </div>
-    </section>
-</div>

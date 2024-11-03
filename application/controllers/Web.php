@@ -24,6 +24,17 @@ class Web extends CI_Controller
 		echo $this->web->pendaftaran('id_baru');
 	}
 
+	public function about()
+	{
+		$data['web_ppdb']	 = $this->web->web_utama();
+		$this->load->view('web/about', $data);
+	}
+	public function privacy()
+	{
+		$data['web_ppdb']	 = $this->web->web_utama();
+		$this->load->view('web/privacy', $data);
+	}
+
 	public function pendaftaran()
 	{
 		$data = array(
@@ -57,7 +68,7 @@ class Web extends CI_Controller
 			$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
 			$mail->Username   = 'no-reply@muzhaffar.com';                     // SMTP username
 			$mail->Password   = 'xx2n@Kepo18#';                               // SMTP password
-// 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+			// 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
 			$mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 			//Recipients

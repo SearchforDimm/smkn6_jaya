@@ -372,7 +372,3 @@ foreach ($countpkm as $berhitung) {
 
 
       </div>
-    </div>
-
-  </section>
-</div>

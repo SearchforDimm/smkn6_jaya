@@ -99,7 +99,7 @@ base_url('');
             <!-- Side Content -->
             <div class="side-column">
                 <div class="card">
-                <div class="card-body-detail card-body-detail-profile text-center">
+                    <div class="card-body-detail card-body-detail-profile text-center">
                         <img src="<?= base_url('assets/upload/'); ?><?php echo $user->pas_photo ?>" alt="<?php echo $user->nama_lengkap; ?>" class="profile-img">
                         <hr>
                         <div><strong>Tanggal Daftar:</strong> <?php echo date($user->tgl_siswa); ?></div>
@@ -149,5 +149,3 @@ base_url('');
                 </div>
             </div>
         </div>
-    </section>
-</div>

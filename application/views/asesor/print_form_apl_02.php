@@ -137,6 +137,4 @@ if (array_key_exists($jurusan, $jurusan_data)) {
                 <div id="pagination"></div>
                 <div id="showing-info"></div>
             </div>
-        </section>
-    </div>
-<?php } ?>
+        <?php } ?>

@@ -178,5 +178,3 @@ base_url('');
                     <?php endforeach; ?>
             </div>
         </div>
-    </section>
-</div>

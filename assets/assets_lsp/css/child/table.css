@@ -358,6 +358,33 @@ select::-ms-expand {
   color: #555;
 }
 
+@media screen and (max-width: 768px) {
+  .custom-table th,
+  .custom-table td {
+    display: block;
+    width: 100%;
+    text-wrap: nowrap;
+  }
+
+  .custom-table tr {
+    margin-bottom: 8px;
+  }
+
+  .custom-table th {
+    font-weight: bold;
+  }
+
+  .custom-table td {
+    position: relative;
+  }
+
+  .custom-table th,
+  .custom-table td {
+    padding: 8px;
+    text-align: left;
+  }
+}
+
 /* Table sorting */
 th {
   cursor: pointer;
@@ -391,7 +418,7 @@ th:hover {
     font-size: 12px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 1365px) {
   .table-wrap {
     padding: 10px;
     overflow-x: auto;
@@ -441,6 +468,9 @@ th:hover {
 }
 
 .table-responsive {
+  width: 100%;
+}
+.custom-table {
   width: 100%;
 }
 

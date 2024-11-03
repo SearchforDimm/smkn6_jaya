@@ -8,18 +8,14 @@ $level = $cek->level;
 $tgl = date('m-Y');
 
 date_default_timezone_set('Asia/Jakarta');
-$nama = $cek->nama_lengkap;
 $email = '';
-$level = 'Admin';
+$level = 'asesor';
 $menu = strtolower($this->uri->segment(1));
 $sub_menu = strtolower($this->uri->segment(2));
 $sub_menu3 = strtolower($this->uri->segment(3));
 
 base_url('');
-
-
 ?>
-
 
 <head>
   <style>
@@ -83,15 +79,11 @@ base_url('');
 
     .verif_red:hover {
       background-color: #dd0909;
-
-
     }
 
     .tombol-print:hover {
       background-color: #007bff;
-
     }
-
 
     /* Card styles */
     .card {
@@ -137,23 +129,19 @@ base_url('');
     }
   </style>
 </head>
-
-
 <div class="main-content">
   <section class="section-act">
-
-
     <main class="main">
       <div class="welcome-container">
-        <h1>Hello, <?php echo ucwords($nama); ?>!</h1>
-        <p>Ini Adalah Laman Ubah Password</p>
+        <h1>Hello, <?= ucwords($nama); ?>!</h1>
+        <p>Ini Adalah Laman Admin Settings</p>
         <div class="welcome-tab">
           <span>
-            <h3 class="flex" style="gap:3px">Home<i class="bx bx-chevrons-right" style="cursor:text"></i> Ubah Pass</h3>
+            <h3 class="flex" style="gap:3px">Home<i class="bx bx-chevrons-right" style="cursor:text"></i> Admin Settings</h3>
           </span>
 
           <div class="button">
-            <a href="<?php echo base_url(uri: 'panel_admin/'); ?>"> Back </a>
+            <a href="<?php echo base_url('panel_admin/'); ?>"> Back </a>
           </div>
         </div>
       </div>
@@ -163,27 +151,92 @@ base_url('');
       <div class="card-body">
         <form action="" enctype="multipart/form-data" method="post">
           <div class="form-group">
-            <label class="control-label col-lg-3">Password Lama</label>
+            <label class="control-label col-lg-3">Sitename</label>
             <div class="col-lg-9">
-              <input type="password" name="password_lama" class="form-control" value="" placeholder="Password Lama" required>
+              <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>" placeholder="Username">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-lg-3">Password Baru</label>
+            <label class="control-label col-lg-3">Deskripsi Meta</label>
             <div class="col-lg-9">
-              <input type="password" name="password" class="form-control" value="" placeholder="Password Baru" required>
+              <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>" placeholder="Username">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-lg-3">Ulangi Password Baru</label>
+            <label class="control-label col-lg-3">Favicon</label>
             <div class="col-lg-9">
-              <input type="password" name="password2" class="form-control" value="" placeholder="Ulangi Password Baru" required>
-            </div>
-            <div class="verif-resp">
-
-              <button type="submit" class="tombol-aksi tombol-print" name="btnupdate2" style="margin-top:50px;">Submit</button>
+              <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>" placeholder="Username">
             </div>
           </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Logo</label>
+            <div class="col-lg-9">
+              <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>" placeholder="Username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Keyword Meta</label>
+            <div class="col-lg-9">
+              <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>" placeholder="Username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Copyrights</label>
+            <div class="col-lg-9">
+              <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>" placeholder="Username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Nama Sekolah</label>
+            <div class="col-lg-9">
+              <input type="text" name="nama_lengkap" class="form-control" value="<?php echo $user->nama_lengkap; ?>" placeholder="Nama Sekolah" maxlength="100" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Alamat</label>
+            <div class="col-lg-9">
+              <input type="text" name="alamat" class="form-control" value="<?php echo $user->alamat; ?>" placeholder="Alamat" maxlength="100" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Nomor Telp</label>
+            <div class="col-lg-9">
+              <input type="text" name="telp" class="form-control" value="<?php echo $user->telp; ?>" placeholder="Nomor Telp" maxlength="100" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Email</label>
+            <div class="col-lg-9">
+              <input type="text" name="email" class="form-control" value="<?php echo $user->email; ?>" placeholder="Email" maxlength="100" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Website</label>
+            <div class="col-lg-9">
+              <input type="text" name="website" class="form-control" value="<?php echo $user->website; ?>" placeholder="Website" maxlength="100" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Kabupaten</label>
+            <div class="col-lg-9">
+              <input type="text" name="kab_sekolah" class="form-control" value="<?php echo $user->kab_sekolah; ?>" placeholder="Kabupaten" maxlength="100" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">Ketua Panitia</label>
+            <div class="col-lg-9">
+              <input type="text" name="ketua_panitia" class="form-control" value="<?php echo $user->ketua_panitia; ?>" placeholder="Ketua Panitia" maxlength="100" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-lg-3">NIP Ketua Panitia</label>
+            <div class="col-lg-9">
+              <input type="text" name="nip_ketua" class="form-control" value="<?php echo $user->nip_ketua; ?>" placeholder="NIP Ketua Panitia" maxlength="100" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="tombol-aksi tombol-print">Simpan</button>
+          </div>
+        </form>
       </div>
-  </section>
-</div>
+    </div>

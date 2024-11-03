@@ -147,7 +147,4 @@ if (isset($jurusan_titles[$jurusan])) { ?>
                 <div id="pagination"></div>
                 <div id="showing-info"></div>
             </div>
-        </section>
-
-    </div>
-<?php } ?>
+        <?php } ?>

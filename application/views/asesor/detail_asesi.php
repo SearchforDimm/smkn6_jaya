@@ -149,5 +149,3 @@ base_url('');
                 </div>
             </div>
         </div>
-    </section>
-</div>

@@ -24,7 +24,7 @@ $nama   = $cek->nama_lengkap;
     </main>
 
 
-    <div class="row chat-wrapper">
+    <div class="row chat-wrapper" style="padding-bottom: 100px;">
       <div class="col-12 col-sm-12 col-md-8 col-lg-8 chat-box-left">
         <div class="card chat-box " id="mychatbox2">
           <div class="card-header">
@@ -77,10 +77,3 @@ $nama   = $cek->nama_lengkap;
       </div>
 
     </div>
-
-
-
-</div>
-</section>
-</section>
-</div>
