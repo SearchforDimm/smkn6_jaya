@@ -98,11 +98,16 @@ base_url('');
                             <td><?= htmlspecialchars($baris->nik) ?></td>
                             <td><?= htmlspecialchars($baris->nama_lengkap) ?></td>
                             <td class="verif-resp download-data-verif">
-                                <a href="<?= base_url('panel_admin/download_kartupelajar/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Kartu Pelajar</a><br>
-                                <a href="<?= base_url('panel_admin/download_raport/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Raport</a><br>
-                                <a href="<?= base_url('panel_admin/download_kartukeluarga/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Kartu Keluarga</a><br>
-                                <a href="<?= base_url('panel_admin/download_pasphoto/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Pas Photo</a><br>
-                                <a href="<?= base_url('panel_admin/download_sertifikatpendukung/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Sertifikat Pendukung</a>
+                                <div class="dropdown-download">
+                                    <button class="tombol-aksi tombol-download dropdown-download-toggle" onclick="toggleDownloadDropdown(this)"><i class="bx bx-download"></i> Download Option</button>
+                                    <div class="dropdown-download-content" id="dropdownDownloadMenu">
+                                        <a href="<?= base_url('panel_admin/download_kartupelajar/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Kartu Pelajar</a><br>
+                                        <a href="<?= base_url('panel_admin/download_raport/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Raport</a><br>
+                                        <a href="<?= base_url('panel_admin/download_kartukeluarga/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Kartu Keluarga</a><br>
+                                        <a href="<?= base_url('panel_admin/download_pasphoto/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Pas Photo</a><br>
+                                        <a href="<?= base_url('panel_admin/download_sertifikatpendukung/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Sertifikat Pendukung</a>
+                                    </div>
+                                </div>
                             </td>
                             <td class="verif-resp">
                                 <a href="<?= base_url('panel_admin/sertifikasi_mandiri/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-print"><i class="bx bx-show"></i> Sertifikasi Mandiri</a>

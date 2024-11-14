@@ -197,9 +197,13 @@ base_url('');
                             <?php echo form_error('telp', '<div class="text-small text-danger">', '</div>') ?>
                         </div>
                         <div class="form-group">
-                            <label>Level</label>
-                            <input type="text" name="level" class="form-control" value="asesor" readonly>
+                            <input type="hidden" name="level" class="form-control" value="asesor" readonly>
                             <?php echo form_error('level', '<div class="text-small text-danger">', '</div>') ?>
+                        </div>
+                        <div class="form-group">
+                            <label>MET</label>
+                            <input type="text" name="met" class="form-control">
+                            <?php echo form_error('met', '<div class="text-small text-danger">', '</div>') ?>
                         </div>
 
                         <div class="form-group">

@@ -79,41 +79,55 @@ if (array_key_exists($jurusan, $jurusan_data)) {
                         <tr>
                             <th scope="col" onclick="sortTable(0)">No</th>
                             <th scope="col" onclick="sortTable(1)">No. Pendaftaraan</th>
-                            <th scope="col" onclick="sortTable(2)">NISN</th>
-                            <th scope="col" onclick="sortTable(3)">NIK</th>
-                            <th scope="col" onclick="sortTable(4)">Nama Lengkap</th>
-                            <th scope="col" class="verif-resp">Status Verifikasi</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" onclick="sortTable(2)">NIK</th>
+                            <th scope="col" onclick="sortTable(3)">Nama Lengkap</th>
+                            <th scope="col" class="verif-resp">Bukti Relevan</th>
+                            <th scope="col" class="verif-resp">Hasil Sertifikasi Mandiri</th>
+                            <th scope="col" class="verif-resp">Status Lulus</th>
+                            <th scope="col" width="180">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
                         foreach ($data->result() as $baris) { ?>
-                            <tr>
-                                <td><?php echo $no++; ?></td>
-                                <td><?php echo $baris->no_pendaftaran; ?></td>
-                                <td><?php echo $baris->nisn; ?></td>
-                                <td><?php echo $baris->nik; ?></td>
-                                <td><?php echo $baris->nama_lengkap; ?></td>
-                                <td class="verif-resp">
-                                    <?php if ($baris->status_pendaftaran == 'lulus') { ?>
-                                        <label class="verif_capsule verif_green">Lulus</label>
-                                    <?php } elseif ($baris->status_pendaftaran == 'tidak lulus') { ?>
-                                        <label class="verif_capsule verif_red">Tidak Lulus</label>
-                                    <?php } else { ?>
-                                        <label class="verif_capsule verif_yellow">Proses</label>
-                                    <?php } ?>
-                                </td>
-                                <td class="td-flex-col-pt">
-                                    <?php if ($baris->status_pendaftaran == '') { ?>
-                                        <a href="<?= base_url('panel_asesor/set_pengumuman/tdk_lulus/' . $baris->no_pendaftaran); ?>" class="tombol-verifikasi tombol-unverif-admin-red" title="Tidak Lulus"><i class="bx bx-x"></i> Tidak Lulus</a>
-                                        <a href="<?= base_url('panel_asesor/set_pengumuman/lulus/' . $baris->no_pendaftaran); ?>" class="tombol-verifikasi tombol-verif-admin-green tombol-lulus" title="Lulus"><i class="bx bx-check"></i> Lulus</a>
-                                    <?php } else { ?>
-                                        <a href="<?= base_url('panel_asesor/set_pengumuman/batal/' . $baris->no_pendaftaran); ?>" class="tombol-verifikasi tombol-unverif-admin-red tombol-batal" title="Batalkan"><i class="bx bx-x-circle"></i> Batal</a>
-                                    <?php } ?>
-                                </td>
+                            <td><?= $no++ ?></td>
 
+                            <td><?= htmlspecialchars($baris->no_pendaftaran) ?></td>
+                            <td><?= htmlspecialchars($baris->nik) ?></td>
+                            <td><?= htmlspecialchars($baris->nama_lengkap) ?></td>
+                            <td class="verif-resp download-data-verif">
+                                <div class="dropdown-download">
+                                    <button class="tombol-aksi tombol-download dropdown-download-toggle" onclick="toggleDownloadDropdown(this)"><i class="bx bx-download"></i> Download Option</button>
+                                    <div class="dropdown-download-content" id="dropdownDownloadMenu">
+                                        <a href="<?= base_url('panel_admin/download_kartupelajar/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Kartu Pelajar</a><br>
+                                        <a href="<?= base_url('panel_admin/download_raport/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Raport</a><br>
+                                        <a href="<?= base_url('panel_admin/download_kartukeluarga/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Kartu Keluarga</a><br>
+                                        <a href="<?= base_url('panel_admin/download_pasphoto/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Pas Photo</a><br>
+                                        <a href="<?= base_url('panel_admin/download_sertifikatpendukung/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Sertifikat Pendukung</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="verif-resp">
+                                <a href="<?= base_url('panel_admin/sertifikasi_mandiri/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-print"><i class="bx bx-show"></i> Sertifikasi Mandiri</a>
+                            </td>
+                            <td class="verif-resp">
+                                <?php if ($baris->status_pendaftaran == 'lulus') { ?>
+                                    <label class="verif_capsule verif_green">Lulus</label>
+                                <?php } elseif ($baris->status_pendaftaran == 'tidak lulus') { ?>
+                                    <label class="verif_capsule verif_red">Tidak Lulus</label>
+                                <?php } else { ?>
+                                    <label class="verif_capsule verif_yellow">Proses</label>
+                                <?php } ?>
+                            </td>
+                            <td class="td-flex-col-pt">
+                                <?php if ($baris->status_pendaftaran == '') { ?>
+                                    <a href="<?= base_url('panel_admin/set_pengumuman/tdk_lulus/' . $baris->no_pendaftaran); ?>" class="tombol-verifikasi tombol-unverif-admin-red" title="Tidak Lulus"><i class="bx bx-x"></i> Tidak Lulus</a>
+                                    <a href="<?= base_url('panel_admin/set_pengumuman/lulus/' . $baris->no_pendaftaran); ?>" class="tombol-verifikasi tombol-verif-admin-green tombol-lulus" title="Lulus"><i class="bx bx-check"></i> Lulus</a>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('panel_admin/set_pengumuman/batal/' . $baris->no_pendaftaran); ?>" class="tombol-verifikasi tombol-unverif-admin-red tombol-batal" title="Batalkan"><i class="bx bx-x-circle"></i> Batal</a>
+                                <?php } ?>
+                            </td>
                             </tr>
                         <?php } ?>
                     </tbody>

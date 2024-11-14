@@ -43,6 +43,23 @@ $nama   = $cek->nama_lengkap;
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
 
+
+<script type="text/javascript">
+  function toggleDownloadDropdown(button) {
+    const dropdownContent = button.nextElementSibling;
+    dropdownContent.style.display = dropdownContent.style.display === "flex" ? "none" : "flex";
+  }
+
+  document.addEventListener("click", function(event) {
+    const openDropdowns = document.querySelectorAll(".dropdown-download-content");
+
+    openDropdowns.forEach(dropdown => {
+      if (!dropdown.contains(event.target) && !dropdown.previousElementSibling.contains(event.target)) {
+        dropdown.style.display = "none";
+      }
+    });
+  });
+</script>
 <script type="text/javascript">
   let currentPage = 1;
   let rowsPerPage = 10;

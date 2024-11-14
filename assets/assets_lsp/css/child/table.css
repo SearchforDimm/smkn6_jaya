@@ -252,11 +252,35 @@ select::-ms-expand {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 30px;
 }
-.tombol-download {
-  background-color: red;
+.dropdown-download {
+  position: relative;
+  padding: 0 5px;
 }
 
+.dropdown-download-toggle {
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #eb2020;
+}
+
+.dropdown-download-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 15px 0;
+  z-index: 1;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.dropdown-download-content a {
+  background-color: #eb2020;
+}
 .tombol-aksi,
 .tombol-verifikasi {
   color: #fff;
