@@ -202,6 +202,23 @@ class Panel_admin extends CI_Controller
 		}
 	}
 
+	public function form_update_bank()
+	{
+		$sess = $this->session->userdata('id_admin');
+		if ($sess == NULL) {
+			redirect('panel_admin/log_in');
+		} else {
+			$data = array(
+				'user'		=> $this->admin->base('bio', $this->session->userdata('id_admin')),
+				'judul_web'	=> "Admin Settings"
+			);
+
+			$this->load->view('templates_admin/header', $data);
+			$this->load->view('templates_admin/sidebar', $data);
+			$this->load->view('admin/form_update_bank', $data);
+			$this->load->view('templates_admin/footer');
+		}
+	}
 
 	public function ubah_pass()
 	{

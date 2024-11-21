@@ -1,15 +1,31 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Siswa extends CI_Controller {
-  
-  public function __construct(){
+class Siswa extends CI_Controller
+{
+
+  public function __construct()
+  {
     parent::__construct();
-    
+
     $this->load->model('SiswaModel');
   }
-  
-  public function index(){
+
+  public function get_skema()
+  {
+    $jurusan = $this->input->post('jurusan');
+    $this->load->model('Skema_model'); // Load your model
+
+    // Fetch skema data based on jurusan
+    $skemaList = $this->Skema_model->get_skema_by_jurusan($jurusan);
+
+    // Return data as JSON
+    echo json_encode($skemaList);
+  }
+
+
+  public function index()
+  {
     $sess = $this->session->userdata('id_admin');
     $data['siswa'] = $this->SiswaModel->view();
     $data = array('user'    => $this->admin->base('bio', $sess));
@@ -17,25 +33,25 @@ class Siswa extends CI_Controller {
     $this->load->view('admin/header', $data);
     $this->load->view('admin/view', $data);
     $this->load->view('admin/footer');
-    
   }
-  
-  public function export(){
+
+  public function export()
+  {
     // Load plugin PHPExcel nya
-    include APPPATH.'third_party/PHPExcel/PHPExcel.php';
-    
-    
+    include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
+
     // Panggil class PHPExcel nya
     $excel = new PHPExcel();
 
 
     // Settingan awal fil excel
     $excel->getProperties()->setCreator('My Notes Code')
-                 ->setLastModifiedBy('My Notes Code')
-                 ->setTitle("Data Siswa")
-                 ->setSubject("Siswa")
-                 ->setDescription("Laporan Semua Data Siswa")
-                 ->setKeywords("Data Siswa");
+      ->setLastModifiedBy('My Notes Code')
+      ->setTitle("Data Siswa")
+      ->setSubject("Siswa")
+      ->setDescription("Laporan Semua Data Siswa")
+      ->setKeywords("Data Siswa");
 
     // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
     $style_col = array(
@@ -130,7 +146,7 @@ class Siswa extends CI_Controller {
     $excel->setActiveSheetIndex(0)->setCellValue('BD3', "LOKASI SEKOLAH");
     $excel->setActiveSheetIndex(0)->setCellValue('BE3', "STATUS PENERIMAAN");
     $excel->setActiveSheetIndex(0)->setCellValue('BF3', "JURUSAN");
-    
+
 
     // Apply style header yang telah kita buat tadi ke masing-masing kolom header
     $excel->getActiveSheet()->getStyle('A3')->applyFromArray($style_col);
@@ -191,7 +207,7 @@ class Siswa extends CI_Controller {
     $excel->getActiveSheet()->getStyle('BD3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('BE3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('BF3')->applyFromArray($style_col);
-    
+
 
 
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
@@ -199,129 +215,129 @@ class Siswa extends CI_Controller {
 
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
-    foreach($siswa as $data){ // Lakukan looping pada variabel siswa
-      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
-    //   $excel->setActiveSheetIndex(0)->setCellValueExplicit('B'.$numrow, $data->nisn, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('C'.$numrow, $data->nik, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->nama_lengkap);
-      $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $data->jk);
-      $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->tempat_lahir);
-      $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $data->tgl_lahir);
-      $excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, $data->agama);
-      $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, $data->status_keluarga);
-      $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow, $data->anak_ke);
-      $excel->setActiveSheetIndex(0)->setCellValue('K'.$numrow, $data->jml_saudara);
-      $excel->setActiveSheetIndex(0)->setCellValue('L'.$numrow, $data->hobi);
-      $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow, $data->cita);
-      $excel->setActiveSheetIndex(0)->setCellValue('N'.$numrow, $data->paud);
-      $excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow, $data->tk);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('P'.$numrow, $data->no_hp_siswa, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow, $data->jenis_tinggal);
-      $excel->setActiveSheetIndex(0)->setCellValue('R'.$numrow, $data->alamat_siswa);
-      $excel->setActiveSheetIndex(0)->setCellValue('S'.$numrow, $data->desa);
-      $excel->setActiveSheetIndex(0)->setCellValue('T'.$numrow, $data->kec);
-      $excel->setActiveSheetIndex(0)->setCellValue('U'.$numrow, $data->kab);
-      $excel->setActiveSheetIndex(0)->setCellValue('V'.$numrow, $data->prov);
-      $excel->setActiveSheetIndex(0)->setCellValue('W'.$numrow, $data->kode_pos);
-      $excel->setActiveSheetIndex(0)->setCellValue('X'.$numrow, $data->jarak);
-      $excel->setActiveSheetIndex(0)->setCellValue('Y'.$numrow, $data->trans);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('Z'.$numrow, $data->no_kk, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValue('AA'.$numrow, $data->kepala_keluarga);
-      $excel->setActiveSheetIndex(0)->setCellValue('AB'.$numrow, $data->nama_ayah);
-      $excel->setActiveSheetIndex(0)->setCellValue('AC'.$numrow, $data->th_lahir_ayah);
-      $excel->setActiveSheetIndex(0)->setCellValue('AD'.$numrow, $data->status_ayah);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AE'.$numrow, $data->nik_ayah, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValue('AF'.$numrow, $data->pdd_ayah);
-      $excel->setActiveSheetIndex(0)->setCellValue('AG'.$numrow, $data->pekerjaan_ayah);
-      $excel->setActiveSheetIndex(0)->setCellValue('AH'.$numrow, $data->nama_ibu);
-      $excel->setActiveSheetIndex(0)->setCellValue('AI'.$numrow, $data->th_lahir_ibu);
-      $excel->setActiveSheetIndex(0)->setCellValue('AJ'.$numrow, $data->status_ibu);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AK'.$numrow, $data->nik_ibu, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValue('AL'.$numrow, $data->pdd_ibu);
-      $excel->setActiveSheetIndex(0)->setCellValue('AM'.$numrow, $data->pekerjaan_ibu);
-      $excel->setActiveSheetIndex(0)->setCellValue('AN'.$numrow, $data->nama_wali);
-      $excel->setActiveSheetIndex(0)->setCellValue('AO'.$numrow, $data->th_lahir_wali);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AP'.$numrow, $data->nik_wali, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValue('AQ'.$numrow, $data->pdd_wali);
-      $excel->setActiveSheetIndex(0)->setCellValue('AR'.$numrow, $data->pekerjaan_wali);
-      $excel->setActiveSheetIndex(0)->setCellValue('AS'.$numrow, $data->penghasilan_ayah);
-      $excel->setActiveSheetIndex(0)->setCellValue('AT'.$numrow, $data->penghasilan_ibu);
-      $excel->setActiveSheetIndex(0)->setCellValue('AU'.$numrow, $data->penghasilan_wali);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AV'.$numrow, $data->no_kks, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AW'.$numrow, $data->no_pkh, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AX'.$numrow, $data->no_kip, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AY'.$numrow, $data->no_hp_ortu, PHPExcel_Cell_DataType::TYPE_STRING);
-      $excel->setActiveSheetIndex(0)->setCellValue('AZ'.$numrow, $data->nama_sekolah);
-      $excel->setActiveSheetIndex(0)->setCellValue('BA'.$numrow, $data->jenjang_sekolah);
-      $excel->setActiveSheetIndex(0)->setCellValue('BB'.$numrow, $data->status_sekolah);
-      $excel->setActiveSheetIndex(0)->setCellValue('BC'.$numrow, $data->npsn_sekolah);
-      $excel->setActiveSheetIndex(0)->setCellValue('BD'.$numrow, $data->lokasi_sekolah);
-      $excel->setActiveSheetIndex(0)->setCellValue('BE'.$numrow, $data->status_pendaftaran);
-      $excel->setActiveSheetIndex(0)->setCellValue('BF'.$numrow, $data->komp_ahli);
+    foreach ($siswa as $data) { // Lakukan looping pada variabel siswa
+      $excel->setActiveSheetIndex(0)->setCellValue('A' . $numrow, $no);
+      //   $excel->setActiveSheetIndex(0)->setCellValueExplicit('B'.$numrow, $data->nisn, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('C' . $numrow, $data->nik, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValue('D' . $numrow, $data->nama_lengkap);
+      $excel->setActiveSheetIndex(0)->setCellValue('E' . $numrow, $data->jk);
+      $excel->setActiveSheetIndex(0)->setCellValue('F' . $numrow, $data->tempat_lahir);
+      $excel->setActiveSheetIndex(0)->setCellValue('G' . $numrow, $data->tgl_lahir);
+      $excel->setActiveSheetIndex(0)->setCellValue('H' . $numrow, $data->agama);
+      $excel->setActiveSheetIndex(0)->setCellValue('I' . $numrow, $data->status_keluarga);
+      $excel->setActiveSheetIndex(0)->setCellValue('J' . $numrow, $data->anak_ke);
+      $excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $data->jml_saudara);
+      $excel->setActiveSheetIndex(0)->setCellValue('L' . $numrow, $data->hobi);
+      $excel->setActiveSheetIndex(0)->setCellValue('M' . $numrow, $data->cita);
+      $excel->setActiveSheetIndex(0)->setCellValue('N' . $numrow, $data->paud);
+      $excel->setActiveSheetIndex(0)->setCellValue('O' . $numrow, $data->tk);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('P' . $numrow, $data->no_hp_siswa, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValue('Q' . $numrow, $data->jenis_tinggal);
+      $excel->setActiveSheetIndex(0)->setCellValue('R' . $numrow, $data->alamat_siswa);
+      $excel->setActiveSheetIndex(0)->setCellValue('S' . $numrow, $data->desa);
+      $excel->setActiveSheetIndex(0)->setCellValue('T' . $numrow, $data->kec);
+      $excel->setActiveSheetIndex(0)->setCellValue('U' . $numrow, $data->kab);
+      $excel->setActiveSheetIndex(0)->setCellValue('V' . $numrow, $data->prov);
+      $excel->setActiveSheetIndex(0)->setCellValue('W' . $numrow, $data->kode_pos);
+      $excel->setActiveSheetIndex(0)->setCellValue('X' . $numrow, $data->jarak);
+      $excel->setActiveSheetIndex(0)->setCellValue('Y' . $numrow, $data->trans);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('Z' . $numrow, $data->no_kk, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValue('AA' . $numrow, $data->kepala_keluarga);
+      $excel->setActiveSheetIndex(0)->setCellValue('AB' . $numrow, $data->nama_ayah);
+      $excel->setActiveSheetIndex(0)->setCellValue('AC' . $numrow, $data->th_lahir_ayah);
+      $excel->setActiveSheetIndex(0)->setCellValue('AD' . $numrow, $data->status_ayah);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AE' . $numrow, $data->nik_ayah, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValue('AF' . $numrow, $data->pdd_ayah);
+      $excel->setActiveSheetIndex(0)->setCellValue('AG' . $numrow, $data->pekerjaan_ayah);
+      $excel->setActiveSheetIndex(0)->setCellValue('AH' . $numrow, $data->nama_ibu);
+      $excel->setActiveSheetIndex(0)->setCellValue('AI' . $numrow, $data->th_lahir_ibu);
+      $excel->setActiveSheetIndex(0)->setCellValue('AJ' . $numrow, $data->status_ibu);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AK' . $numrow, $data->nik_ibu, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValue('AL' . $numrow, $data->pdd_ibu);
+      $excel->setActiveSheetIndex(0)->setCellValue('AM' . $numrow, $data->pekerjaan_ibu);
+      $excel->setActiveSheetIndex(0)->setCellValue('AN' . $numrow, $data->nama_wali);
+      $excel->setActiveSheetIndex(0)->setCellValue('AO' . $numrow, $data->th_lahir_wali);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AP' . $numrow, $data->nik_wali, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValue('AQ' . $numrow, $data->pdd_wali);
+      $excel->setActiveSheetIndex(0)->setCellValue('AR' . $numrow, $data->pekerjaan_wali);
+      $excel->setActiveSheetIndex(0)->setCellValue('AS' . $numrow, $data->penghasilan_ayah);
+      $excel->setActiveSheetIndex(0)->setCellValue('AT' . $numrow, $data->penghasilan_ibu);
+      $excel->setActiveSheetIndex(0)->setCellValue('AU' . $numrow, $data->penghasilan_wali);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AV' . $numrow, $data->no_kks, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AW' . $numrow, $data->no_pkh, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AX' . $numrow, $data->no_kip, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValueExplicit('AY' . $numrow, $data->no_hp_ortu, PHPExcel_Cell_DataType::TYPE_STRING);
+      $excel->setActiveSheetIndex(0)->setCellValue('AZ' . $numrow, $data->nama_sekolah);
+      $excel->setActiveSheetIndex(0)->setCellValue('BA' . $numrow, $data->jenjang_sekolah);
+      $excel->setActiveSheetIndex(0)->setCellValue('BB' . $numrow, $data->status_sekolah);
+      $excel->setActiveSheetIndex(0)->setCellValue('BC' . $numrow, $data->npsn_sekolah);
+      $excel->setActiveSheetIndex(0)->setCellValue('BD' . $numrow, $data->lokasi_sekolah);
+      $excel->setActiveSheetIndex(0)->setCellValue('BE' . $numrow, $data->status_pendaftaran);
+      $excel->setActiveSheetIndex(0)->setCellValue('BF' . $numrow, $data->komp_ahli);
 
       $excel->getActiveSheet()->getStyle('C')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
 
-      
+
       // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
-      $excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('B'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('C'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('D'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('E'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('F'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('G'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('H'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('I'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('J'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('K'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('L'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('M'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('N'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('O'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('P'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('Q'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('R'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('S'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('T'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('U'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('V'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('W'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('X'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('Y'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('Z'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AA'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AB'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AC'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AD'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AE'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AF'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AG'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AG'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AI'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AJ'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AK'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AL'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AM'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AN'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AO'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AP'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AQ'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AR'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AS'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AT'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AU'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AV'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AW'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AX'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AY'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('AZ'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('BA'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('BB'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('BC'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('BD'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('BE'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('BF'.$numrow)->applyFromArray($style_row);
-      
+      $excel->getActiveSheet()->getStyle('A' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('B' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('C' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('D' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('E' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('F' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('G' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('H' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('I' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('J' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('K' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('L' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('M' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('N' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('O' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('P' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('Q' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('R' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('S' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('T' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('U' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('V' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('W' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('X' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('Y' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('Z' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AA' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AB' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AC' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AD' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AE' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AF' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AG' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AG' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AI' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AJ' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AK' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AL' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AM' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AN' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AO' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AP' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AQ' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AR' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AS' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AT' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AU' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AV' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AW' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AX' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AY' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('AZ' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('BA' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('BB' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('BC' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('BD' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('BE' . $numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('BF' . $numrow)->applyFromArray($style_row);
+
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
     }
@@ -329,7 +345,7 @@ class Siswa extends CI_Controller {
     $excel->getActiveSheet()->getStyle('C')->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
 
     // Set width kolom
-    
+
     $excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
     $excel->getActiveSheet()->getColumnDimension('B')->setWidth(15); // Set width kolom B
     $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
@@ -388,7 +404,7 @@ class Siswa extends CI_Controller {
     $excel->getActiveSheet()->getColumnDimension('BD')->setWidth(30);
     $excel->getActiveSheet()->getColumnDimension('BE')->setWidth(30);
     $excel->getActiveSheet()->getColumnDimension('BF')->setWidth(30);
-    
+
     // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
 

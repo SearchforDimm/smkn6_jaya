@@ -52,6 +52,35 @@ $now = date_create('now')->format('Y-m-d H:i:s');
         <div id="pesan_komentar">*Sesuai</div>
       </div>
     </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">N.I.K <span
+          class="text-danger">*</span></label>
+      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
+        <input type="text" name="nik" class="form-control bg-blue class" onkeypress="return hanyaAngka(this);"
+          maxlength="10" placeholder="Nomor Induk Keluarga" data-parsley-group="block1"
+          data-parsley-errors-container='div[id="error-nik"]'>
+        <i class="fa fa-users" style="margin-left:15px;"></i>
+        <div id="error-nik"
+          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
+        <div id="pesan_komentar">*Sesuai</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Nama Sekolah <span
+          class="text-danger">*</span></label>
+      <div class="col-sm-9 prepend-icon">
+        <input type="text" name="nama_sekolah" class="form-control bg-blue" placeholder="Nama sekolah Calon Asesi"
+          maxlength="100" data-parsley-group="block1" data-radio="iradio_square-blue"
+          data-parsley-errors-container='div[id="error-nama_sekolah"]' required>
+        <i class="fa fa-user" style="margin-left:15px;"></i>
+        <div id="error-nama_sekolah"
+          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
+        <div id="pesan_komentar">*Sesuai dengan akte kelahiran/ijazah</div>
+      </div>
+    </div>
+
+
 
     <!-- <div class="form-group">
       <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">NIK Asesi <span
@@ -203,7 +232,7 @@ $now = date_create('now')->format('Y-m-d H:i:s');
       </div>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Jenis tempat tinggal <span class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <select class="form-control bg-blue class" data-placeholder="Pilih jenis tempat tinggal" name="jenis_tinggal" data-parsley-group="block2" data-parsley-errors-container='div[id="error-jenis_tinggal"]' required>
@@ -219,7 +248,7 @@ $now = date_create('now')->format('Y-m-d H:i:s');
         </select>
         <div id="error-jenis_tinggal" style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Alamat Tempat Tinggal <span class="text-danger">*</span></label>
@@ -282,71 +311,7 @@ $now = date_create('now')->format('Y-m-d H:i:s');
     </div>
     &emsp;
     <hr>
-    <p>b.&emsp;Data Pekerjaan Sekarang</p>
-    <div class="form-group">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Nama Perusahaan <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon">
-        <input type="text" name="nama_perusahaan" class="form-control bg-blue" placeholder="Alamat email Calon Asesi"
-          maxlength="100" data-parsley-group="block1" data-radio="iradio_square-blue"
-          data-parsley-errors-container='div[id="error-nama_perusahaan"]' required>
-        <i class="fa fa-building" style="margin-left:15px;"></i>
-        <div id="error-nama_perusahaan"
-          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Jabatan <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon">
-        <input type="text" name="jabatan" class="form-control bg-blue" placeholder="Alamat email Calon Asesi"
-          maxlength="100" data-parsley-group="block1" data-radio="iradio_square-blue"
-          data-parsley-errors-container='div[id="error-jabatan"]' required>
-        <i class="fa fa-users" style="margin-left:15px;"></i>
-        <div id="error-jabatan"
-          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Alamat <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon">
-        <input type="text" name="alamat_perusahaan" class="form-control bg-blue class"
-          placeholder="Alamat Perusahaan Calon Asesi" data-parsley-group="block1"
-          data-parsley-errors-container='div[id="error-alamat_perusahaan"]' required>
-        <i class="fa fa-map-marker" style="margin-left:15px;"></i>
-        <div id="error-alamat_perusahaan"
-          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">No. Telp <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon" style="margin-top:3px;">
-        <input type="text" name="no_telp_perusahaan" class="form-control bg-blue class" maxlength="14"
-          onkeypress="return hanyaAngka(this);" placeholder="No. Telp Perusahaan Calon Asesi"
-          data-parsley-group="block1" data-parsley-errors-container='div[id="error-no_telp_perusahaan"]' required>
-        <i class="fa fa-phone" style="margin-left:15px;"></i>
-        <div id="error-no_telp_perusahaan"
-          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Email Perusahaan <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9 prepend-icon">
-        <input type="text" name="email_perusahaan" class="form-control bg-blue" placeholder="Alamat email Calon Asesi"
-          maxlength="100" data-parsley-group="block1" data-radio="iradio_square-blue"
-          data-parsley-errors-container='div[id="error-email_perusahaan"]' required>
-        <i class="fa fa-envelope-o" style="margin-left:15px;"></i>
-        <div id="error-email_perusahaan"
-          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
-      </div>
-    </div>
     &emsp;
 
     <div class="form-group">
@@ -386,26 +351,27 @@ $now = date_create('now')->format('Y-m-d H:i:s');
       </div>
     </div>
 
+
     <div class="form-group">
       <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Jurusan <span
           class="text-danger">*</span></label>
       <div class="col-sm-9" style="margin-top:3px;">
         <div class="radio" style="margin-top:3px;margin-left:-20px;">
-          <label for="jurusan_rpl">
+          <label for="jurusan_rpl" style="display: flex; align-items: center;">
             <input type="radio" value="RPL" name="jurusan" id="jurusan_rpl" data-parsley-group="block1"
               required> &nbsp;RPL (RPL)
           </label>
         </div>
 
         <div class="radio" style="margin-top:3px;margin-left:-20px;">
-          <label for="jurusan_tkj">
+          <label for="jurusan_tkj" style="display: flex; align-items: center;">
             <input type="radio" value="TKJ" name="jurusan" id="jurusan_tkj" data-parsley-group="block1"
               required> &nbsp;TKJ (TKJ)
           </label>
         </div>
 
         <div class="radio" style="margin-top:3px;margin-left:-20px;">
-          <label for="jurusan_mm">
+          <label for="jurusan_mm" style="display: flex; align-items: center;">
             <input type="radio" value="MM" name="jurusan" id="jurusan_mm" data-parsley-group="block1"
               required> &nbsp;MM (MM)
           </label>
@@ -433,6 +399,9 @@ $now = date_create('now')->format('Y-m-d H:i:s');
       </div>
     </div>
   </div>
+
+
+</div>
 
 </div>
 </div>

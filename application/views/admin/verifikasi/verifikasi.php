@@ -82,8 +82,9 @@ base_url('');
                         <th scope="col" onclick="sortTable(2)">NISN</th>
                         <th scope="col" onclick="sortTable(3)">NIK</th>
                         <th scope="col" onclick="sortTable(4)">Nama Lengkap</th>
-                        <th scope="col" class="verif-resp">Status Verifikasi</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" onclick="sortTable(5)">Bukti Relevan</th>
+                        <th scope="col" onclick="sortTable(6)" class="verif-resp verif-resp-status"">Status Verifikasi</th>
+                        <th scope=" col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,6 +98,18 @@ base_url('');
                             <td><?= $baris->nisn ?></td>
                             <td><?= $baris->nik ?></td>
                             <td><?= $baris->nama_lengkap ?></td>
+                            <td class="verif-resp download-data-verif">
+                                <div class="dropdown-download">
+                                    <button class="tombol-aksi tombol-download dropdown-download-toggle" onclick="toggleDownloadDropdown(this)"><i class="bx bx-download"></i> Download Option</button>
+                                    <div class="dropdown-download-content" id="dropdownDownloadMenu">
+                                        <a href="<?= base_url('panel_admin/download_kartupelajar/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Kartu Pelajar</a><br>
+                                        <a href="<?= base_url('panel_admin/download_raport/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Raport</a><br>
+                                        <a href="<?= base_url('panel_admin/download_kartukeluarga/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Kartu Keluarga</a><br>
+                                        <a href="<?= base_url('panel_admin/download_pasphoto/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Pas Photo</a><br>
+                                        <a href="<?= base_url('panel_admin/download_sertifikatpendukung/' . $baris->id_siswa) ?>" class="tombol-aksi tombol-download"><i class="bx bx-download"></i> Sertifikat Pendukung</a>
+                                    </div>
+                                </div>
+                            </td>
                             <td class="verif-resp">
                                 <?php if ($baris->status_verifikasi == 1) { ?>
                                     <label class="verif_capsule verif_green">Terverifikasi</label>
@@ -144,15 +157,12 @@ base_url('');
         const start = (currentPage - 1) * rowsPerPage;
         const end = start + rowsPerPage;
 
-        // Display rows for current page
         for (let i = 0; i < totalRows; i++) {
             rows[i].style.display = (i >= start && i < end) ? '' : 'none';
         }
 
-        // Update showing info
         document.getElementById('showing-info').innerHTML = `Showing ${start + 1} to ${Math.min(end, totalRows)} of ${totalRows} entries`;
 
-        // Create pagination buttons
         const pagination = document.getElementById('pagination');
         pagination.innerHTML = '';
         for (let i = 1; i <= totalPages; i++) {

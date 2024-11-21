@@ -8,9 +8,7 @@ $level  = 'Calon Asesi';
 $menu     = strtolower($this->uri->segment(1));
 $sub_menu = strtolower($this->uri->segment(2));
 $sub_menu3 = strtolower($this->uri->segment(3));
-foreach ($pesan as $pes) {
-  $awal = $pes->waktu;
-}
+
 $akhir = date('d-m-Y H:i:s');
 ?>
 
@@ -55,18 +53,36 @@ $akhir = date('d-m-Y H:i:s');
                 </a>
               </li>
 
-              <ul class="menu_item logout">
-                <div class="menu_title flex">
-                  <span class="title">Lainnya</span>
-                  <span class="line"></span>
-                </div>
-                <li class="item">
-                  <a href="<?php echo base_url('panel_siswa/logout') ?>" class="link flex logout-link">
-                    <i class="bx bx-log-out"></i>
-                    <span>Keluar</span>
-                  </a>
-                </li>
-              </ul>
+              <div class="menu_title flex">
+                <span class="title">Bukti Pendukung</span>
+                <span class="line"></span>
+              </div>
+              <li class="item">
+                <a href="<?php echo base_url('panel_siswa/upload_pendukung') ?>" class="link flex">
+                  <i class='bx bx-upload'></i>
+                  <span>Upload Pendukung</span>
+                </a>
+              </li>
+              <li class="item">
+                <a href="<?php echo base_url('panel_siswa/arsip_pendukung') ?>" class="link flex">
+                  <i class='bx bx-archive'></i>
+                  <span>Arsip Pendukung</span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="menu_item logout">
+              <div class="menu_title flex">
+                <span class="title">Lainnya</span>
+                <span class="line"></span>
+              </div>
+              <li class="item">
+                <a href="<?php echo base_url('panel_siswa/logout') ?>" class="link flex logout-link">
+                  <i class="bx bx-log-out"></i>
+                  <span>Keluar</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

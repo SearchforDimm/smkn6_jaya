@@ -174,6 +174,24 @@ class Panel_asesor extends CI_Controller
 	}
 
 
+	public function surat_tugas()
+	{
+		$sess = $this->session->userdata('id_asesor');
+		if ($sess == NULL) {
+			redirect('panel_asesor/log_in');
+		} else {
+			$data = array(
+				'user' 		=> $this->asesor->base('bio', $this->session->userdata('id_asesor')),
+				'judul_web'	=> "Surat Tugas"
+			);
+
+			$this->load->view('templates_asesor/header', $data);
+			$this->load->view('templates_asesor/sidebar', $data);
+			$this->load->view('asesor/surat_tugas', $data);
+			$this->load->view('templates_asesor/footer');
+		}
+	}
+
 	public function ubah_pass()
 	{
 		$sess = $this->session->userdata('id_asesor');
@@ -1548,6 +1566,24 @@ class Panel_asesor extends CI_Controller
 			$this->load->view('templates_asesor/header', $data);
 			$this->load->view('templates_asesor/sidebar', $data);
 			$this->load->view('asesor/print_form_apl_02', $data);
+			$this->load->view('templates_asesor/footer');
+		}
+	}
+
+	public function print_surat_tugas()
+	{
+		$sess = $this->session->userdata('id_asesor');
+		if ($sess == NULL) {
+			redirect('panel_asesor/log_in');
+		} else {
+			$data = array(
+				'user'		=> $this->asesor->base('bio', $sess),
+				'judul_web'	=> "Print Surat Tugas"
+			);
+
+			$this->load->view('templates_asesor/header', $data);
+			$this->load->view('templates_asesor/sidebar', $data);
+			$this->load->view('asesor/print_surat_tugas', $data);
 			$this->load->view('templates_asesor/footer');
 		}
 	}

@@ -1,104 +1,46 @@
 <div class="panel">
   <div class="panel-heading" style="background: #6777EF; color: honeydew;">
-    <h2 align="center" style="margin-top: 10px;">FORM ISIAN FR-APL-01<br><b>ALAMAT CALON ASESI</b> </h2>
+    <h2 align="center" style="margin-top: 10px;">FORM ISIAN FR-APL-01<br><b>BUKTI (PALING RELEVAN): RINCIAN PENDIDIKAN/PELATIHAN, PENGALAMAN KERJA, PENGALAMAN HIDUP</b> </h2>
     <!-- <hr> -->
   </div>
   <div class="panel-body">
-
-    <hr>
-    <p>c.&emsp;Data Permohonan Sertifikasi</p>
-
+    <div id="pesan_komentar">*Max upload file 10mb/file menggunakan ekstensi pdf,zip,rar,png,jpg,jpeg,tiff</div>
     <div class="form-group">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:-3px">Tujuan Asesmen <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9">
-        <div class="radio" style="margin-top:3px;margin-left:-20px;">
-          <label>
-            <input type="radio" value="Sertifikasi" name="tujuan_asesmen" data-parsley-group="block1"
-              data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-error-tujuan"]'
-              required></i> &nbsp;Sertifikasi
-          </label>
-        </div>
-        <!--<div class="radio" style="margin-top:3px;margin-left:-20px;">-->
-        <!--  <label>-->
-        <!--    <input type="radio" value="Sertifikasi Ulang" name="tujuan_asesmen" data-parsley-group="block1" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-error-tujuan"]' required></i> &nbsp;Sertifikasi Ulang-->
-        <!--  </label>-->
-        <!--</div>-->
-        <!--<div class="radio" style="margin-top:3px;margin-left:-20px;">-->
-        <!--  <label>-->
-        <!--    <input type="radio" value="Pengakuan Kompetensi Terkini(PKT)" name="tujuan_asesmen" data-parsley-group="block1" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-error-tujuan"]' required></i> &nbsp;Pengakuan Kompetensi Terkini(PKT)-->
-        <!--  </label>-->
-        <!--</div>-->
-        <!--<div class="radio" style="margin-top:3px;margin-left:-20px;">-->
-        <!--  <label>-->
-        <!--    <input type="radio" value="Rekognisi Pembelajaran Lampau" name="tujuan_asesmen" data-parsley-group="block1" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-error-tujuan"]' required></i> &nbsp;Rekognisi Pembelajaran Lampau-->
-        <!--  </label>-->
-        <!--</div>-->
-        <!--<div id="condition-error-tujuan" style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>-->
-        <!--<div class="radio" style="margin-top:3px;margin-left:-20px;">-->
-        <!--  <label>-->
-        <!--    <input type="radio" value="Lainnya" name="tujuan_asesmen" data-parsley-group="block1" data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-error-tujuan"]' required></i> &nbsp;Lainnya-->
-        <!--  </label>-->
-        <!--</div>-->
-        <div id="condition-error-tujuan"
-          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Kartu Pelajar <span class="text-danger">*</span></label>
+      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
+        <input type="file" name="kartu_pelajar" class="form-control bg-blue class" data-parsley-group="block3" data-parsley-errors-container='div[id="error-kartu_pelajar"]' required>
+        <div id="error-kartu_pelajar" style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Raport smt 1-5 <span class="text-danger">*</span></label>
+      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
+        <input type="file" name="raport" class="form-control bg-blue class" data-parsley-group="block3" data-parsley-errors-container='div[id="error-raport"]' required>
+        <div id="error-raport" style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Kartu Keluarga <span class="text-danger">*</span></label>
+      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
+        <input type="file" name="kartu_keluarga" class="form-control bg-blue class" data-parsley-group="block3" data-parsley-errors-container='div[id="error-kartu_keluarga"]' required>
+        <div id="error-kartu_keluarga" style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Pas Photo 3x4 <span class="text-danger">*</span></label>
+      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
+        <input type="file" name="pas_photo" class="form-control bg-blue class" data-parsley-group="block3" data-parsley-errors-container='div[id="error-pas_photo"]' required>
+        <div id="error-pas_photo" style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Sertifikat pendukung <span class="text-danger">*</span></label>
+      <div class="col-sm-9 prepend-icon" style="margin-top:1px;">
+        <input type="file" name="sertifikat_pendukung" class="form-control bg-blue class" data-parsley-group="block3" data-parsley-errors-container='div[id="error-sertifikat_pendukung"]' required>
+        <div id="error-sertifikat_pendukung" style=" background:#FFBABA;color: #D8000C; width:auto;border-radius:5px;padding-left:10px;"></div>
+        <div id="pesan_komentar">*Seperti sertifikat pelatihan, webinar, dan semacamnya.</div>
       </div>
     </div>
 
-    <div class="form-group">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Jurusan <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9" style="margin-top:3px;">
-        <div class="radio" style="margin-top:3px;margin-left:-20px;">
-          <label for="jurusan_dkv">
-            <input type="radio" value="DKV" name="jurusan" id="jurusan_dkv" data-parsley-group="block1"
-              data-radio="iradio_square-blue" data-parsley-errors-container='div[id="condition-error-tujuan"]'
-              required></i> &nbsp;Desain Komunikasi Visual (DKV)
-          </label>
-        </div>
-
-        <div class="radio" style="margin-top:3px;margin-left:-20px;">
-          <label id="jurusan_akl">
-            <input type="radio" value="DKV" name="jurusan" id="jurusan_akl" data-parsley-group="block1"
-              data-radio="iradio_square-blue" data-parsley-errors-container='div[id="error-komp-ahli"]' required></i>
-            &nbsp;Akuntansi (AKL)
-          </label>
-        </div>
-
-        <div class="radio" style="margin-top:3px;margin-left:-20px;">
-          <label id="jurusan_bdp">
-            <input type="radio" value="DKV" name="jurusan" id="jurusan_bdp" data-parsley-group="block1"
-              data-radio="iradio_square-blue" data-parsley-errors-container='div[id="error-komp-ahli"]' required></i>
-            &nbsp;Bisnis Daring dan Pemasaran (BDP)
-          </label>
-        </div>
-      </div>
-      <div id="pesan_komentar">*Pilih jurusan Anda</div>
-      <div id="error-komp-ahli"
-        style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
-    </div>
-
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label" style="text-align:right; margin-top:6px">Skema Sertifikasi <span
-          class="text-danger">*</span></label>
-      <div class="col-sm-9" style="margin-top:3px;">
-        <select class="form-control bg-blue class" data-placeholder="Pilih Skema Sertifikasi yang Diinginkan"
-          name="id_komp" data-parsley-group="block1" data-parsley-errors-container='div[id="error-komp-ahli"]' required>
-          <option value="">Pilih salah satu</option>
-          <?php foreach ($v_komp as $baris): ?>
-            <option value="<?php echo $baris->id_komp; ?>"><?php echo $baris->kompetensi; ?></option>
-          <?php endforeach; ?>
-        </select>
-        <div id="pesan_komentar">*Pilih skema sertifikasi yang diinginkan</div>
-        <div id="error-komp-ahli"
-          style=" background:#FFBABA; color: #D8000C; width:auto; padding-left:10px; font-size: 10px;"></div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<div class="col-md-12">
-  <div>
+    <div class="col-md-12">
+      <div>

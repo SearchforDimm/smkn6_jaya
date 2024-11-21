@@ -131,6 +131,13 @@ h4 {
   border-radius: 10px;
 }
 
+.alert-pengumuman a {
+  color: #bbb;
+}
+.alert-pengumuman a:hover {
+  color: #3a57e8;
+}
+
 @media screen and (max-width: 1100px) {
   .chat-wrapper {
     flex-direction: column;

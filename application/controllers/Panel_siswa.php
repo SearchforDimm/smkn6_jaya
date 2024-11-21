@@ -63,7 +63,7 @@ class Panel_siswa extends CI_Controller
 			SELECT 'DAS' as Source,das.no_pendaftaran 
 			FROM tbl_pemdas das
 			WHERE das.no_pendaftaran IN  ('$id','$id','$id','$id','$id','$id','$id','$id','$id')")->row();
-			
+
 			$this->load->view('templates_asesi/header', $data);
 			$this->load->view('templates_asesi/sidebar', $data);
 			$this->load->view('asesi/dashboard', $data);
@@ -73,15 +73,15 @@ class Panel_siswa extends CI_Controller
 
 	public function test()
 	{
-			$data = array(
-				'user'		=> $this->siswa->base_biodata($this->session->userdata('no_pendaftaran')),
-				'judul_web'	=> "HOME"
-			);
-			$id = $this->session->userdata('no_pendaftaran');
-			$data['pesan'] = $this->db->query("SELECT * FROM tbl_pesan INNER JOIN tbl_user ON tbl_pesan.id_user = tbl_user.id_user WHERE tbl_pesan.no_pendaftaran = '$id' ORDER BY tbl_pesan.waktu DESC")->result();
-			$this->load->view('siswa/header', $data);
-			$this->load->view('siswa/dashboard', $data);
-			$this->load->view('siswa/footer');
+		$data = array(
+			'user'		=> $this->siswa->base_biodata($this->session->userdata('no_pendaftaran')),
+			'judul_web'	=> "HOME"
+		);
+		$id = $this->session->userdata('no_pendaftaran');
+		$data['pesan'] = $this->db->query("SELECT * FROM tbl_pesan INNER JOIN tbl_user ON tbl_pesan.id_user = tbl_user.id_user WHERE tbl_pesan.no_pendaftaran = '$id' ORDER BY tbl_pesan.waktu DESC")->result();
+		$this->load->view('siswa/header', $data);
+		$this->load->view('siswa/dashboard', $data);
+		$this->load->view('siswa/footer');
 	}
 
 	public function pengumuman()
@@ -97,6 +97,39 @@ class Panel_siswa extends CI_Controller
 			$this->load->view('siswa/header', $data);
 			$this->load->view('siswa/pengumuman', $data);
 			$this->load->view('siswa/footer');
+		}
+	}
+
+	public function upload_pendukung()
+	{
+		if ($this->session->userdata('no_pendaftaran') == NULL) {
+			redirect('');
+		} else {
+			$data = array(
+				'user'		=> $this->siswa->base_biodata($this->session->userdata('no_pendaftaran')),
+				'judul_web'	=> "Upload Bukti Pendukung"
+			);
+
+			$this->load->view('templates_asesi/header', $data);
+			$this->load->view('templates_asesi/sidebar', $data);
+			$this->load->view('asesi/upload_pendukung', $data);
+			$this->load->view('templates_asesi/footer');
+		}
+	}
+	public function arsip_pendukung()
+	{
+		if ($this->session->userdata('no_pendaftaran') == NULL) {
+			redirect('');
+		} else {
+			$data = array(
+				'user'		=> $this->siswa->base_biodata($this->session->userdata('no_pendaftaran')),
+				'judul_web'	=> "Arsip Bukti Pendukung"
+			);
+
+			$this->load->view('templates_asesi/header', $data);
+			$this->load->view('templates_asesi/sidebar', $data);
+			$this->load->view('asesi/arsip_pendukung', $data);
+			$this->load->view('templates_asesi/footer');
 		}
 	}
 
@@ -202,7 +235,7 @@ class Panel_siswa extends CI_Controller
 			$data['kompetensi_pengoperasianaplikasi'] = $this->db->query("SELECT * FROM tbl_pengoperasianaplikasi INNER JOIN tbl_siswa ON tbl_siswa.no_pendaftaran = tbl_pengoperasianaplikasi.no_pendaftaran WHERE tbl_pengoperasianaplikasi.no_pendaftaran='$id'")->result();
 			$data['kompetensi_pelayananperbankan'] = $this->db->query("SELECT * FROM tbl_pelayananperbankan INNER JOIN tbl_siswa ON tbl_siswa.no_pendaftaran = tbl_pelayananperbankan.no_pendaftaran WHERE tbl_pelayananperbankan.no_pendaftaran='$id'")->result();
 			$this->load->view('admin/header2', $data);
-				$this->load->view('asesi/hasilformapl2', $data);
+			$this->load->view('asesi/hasilformapl2', $data);
 		}
 	}
 
@@ -230,46 +263,48 @@ class Panel_siswa extends CI_Controller
 			$data['kompetensi_instalasijaringan'] = $this->db->query("SELECT * FROM tbl_instalasijaringan INNER JOIN tbl_siswa ON tbl_siswa.no_pendaftaran = tbl_instalasijaringan.no_pendaftaran WHERE tbl_instalasijaringan.no_pendaftaran='$id'")->result();
 			$data['kompetensi_pengoperasianaplikasi'] = $this->db->query("SELECT * FROM tbl_pengoperasianaplikasi INNER JOIN tbl_siswa ON tbl_siswa.no_pendaftaran = tbl_pengoperasianaplikasi.no_pendaftaran WHERE tbl_pengoperasianaplikasi.no_pendaftaran='$id'")->result();
 			$data['kompetensi_pelayananperbankan'] = $this->db->query("SELECT * FROM tbl_pelayananperbankan INNER JOIN tbl_siswa ON tbl_siswa.no_pendaftaran = tbl_pelayananperbankan.no_pendaftaran WHERE tbl_pelayananperbankan.no_pendaftaran='$id'")->result();
-			if($data['asesi']->id_komp == 12) {
+			if ($data['asesi']->id_komp == 12) {
 				$this->load->view('asesi/tinjau_formapl01/pelayananperbankan', $data);
-			}	
-			if($data['asesi']->id_komp == 11) {
+			}
+			if ($data['asesi']->id_komp == 11) {
 				$this->load->view('asesi/tinjau_formapl01/pengoperasianaplikasi', $data);
 			}
-			if($data['asesi']->id_komp == 10) {
+			if ($data['asesi']->id_komp == 10) {
 				$this->load->view('asesi/tinjau_formapl01/audiovideo', $data);
 			}
-			if($data['asesi']->id_komp == 9) {
+			if ($data['asesi']->id_komp == 9) {
 				$this->load->view('asesi/tinjau_formapl01/animasi2d', $data);
 			}
-			if($data['asesi']->id_komp == 8) {
+			if ($data['asesi']->id_komp == 8) {
 				$this->load->view('asesi/tinjau_formapl01/desainpercetakan', $data);
 			}
-			if($data['asesi']->id_komp == 7) {
+			if ($data['asesi']->id_komp == 7) {
 				$this->load->view('asesi/tinjau_formapl01/desaingrafis', $data);
 			}
-			if($data['asesi']->id_komp == 6) {
+			if ($data['asesi']->id_komp == 6) {
 				$this->load->view('asesi/tinjau_formapl01/konfigurasirouting', $data);
 			}
-			if($data['asesi']->id_komp == 5) {
+			if ($data['asesi']->id_komp == 5) {
 				$this->load->view('asesi/tinjau_formapl01/konfigurasiperangkat', $data);
 			}
-			if($data['asesi']->id_komp == 4) {
+			if ($data['asesi']->id_komp == 4) {
 				$this->load->view('asesi/tinjau_formapl01/instalasijaringan', $data);
 			}
-			if($data['asesi']->id_komp == 3) {
+			if ($data['asesi']->id_komp == 3) {
 				$this->load->view('asesi/tinjau_formapl01/pbo', $data);
 			}
-			if($data['asesi']->id_komp == 2) {
+			if ($data['asesi']->id_komp == 2) {
 				$this->load->view('asesi/tinjau_formapl01/pemweb', $data);
 			}
-			if($data['asesi']->id_komp == 1) {
+			if ($data['asesi']->id_komp == 1) {
 				$this->load->view('asesi/tinjau_formapl01/pemdas', $data);
 			}
 		}
 	}
 
-	public function download_informasi() {
+
+	public function download_informasi()
+	{
 		$sess 		= $this->session->userdata('no_pendaftaran');
 		$data = array(
 			'user'		=> $this->siswa->base_biodata($sess),

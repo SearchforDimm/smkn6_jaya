@@ -45,7 +45,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
         </div>
         <div class="pengumuman-body pengumuman-red">
           <div class="alert-pengumuman" role="alert">
-            <p>Mohon Maaf, <?php echo $nama; ?>! Anda tidak diterima sebagai Asesi LSP SMKN 6 JAKARTA . Selalu cek notifikasi agar mengetahui informasi lebih lanjut mengenai proses asesmen.</p>
+            <p>Mohon Maaf, <?php echo $nama; ?>! Anda tidak diterima sebagai Asesi LSP SMKN 6 JAKARTA . Selalu cek notifikasi agar mengetahui informasi lebih lanjut mengenai proses asesmen. <a href="<?php echo base_url('panel_siswa/upload_pendukung') ?>">Klik di sini untuk mengupload file pendukung.</a></p>
           </div>
         </div>
       </div>

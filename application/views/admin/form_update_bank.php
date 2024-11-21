@@ -27,10 +27,10 @@ base_url('');
         <main class="main">
             <div class="welcome-container">
                 <h1>Hello, <?php echo ucwords($nama); ?>!</h1>
-                <p>Ini Adalah Form Bank Soal</p>
+                <p>Ini Adalah Form Edit Bank Soal</p>
                 <div class="welcome-tab">
                     <span>
-                        <h3 class="flex" style="gap:3px">Home<i class="bx bx-chevrons-right" style="cursor:text"></i> Form Bank Soal</h3>
+                        <h3 class="flex" style="gap:3px">Home<i class="bx bx-chevrons-right" style="cursor:text"></i> Form Edit Bank Soal</h3>
                     </span>
 
                     <div class="button">
@@ -44,7 +44,7 @@ base_url('');
         <div class="form_banksoal_wrapper" style="margin-top: 270px">
             <div class="bank-soal-header">
                 <h1 class="bank_soal_title">
-                    Bank Soal
+                    Edit Bank Soal
                 </h1>
                 <div class="table-add-button">
                     <a class="button" href="<?php echo base_url(uri: 'panel_admin/bank_soal'); ?>"> Save <i class="bx bx-plus"></i> </a>

@@ -51,6 +51,12 @@ $sub_menu3 = strtolower($this->uri->segment(3));
                 </a>
               </li>
               <li class="item">
+                <a href="<?php echo base_url('panel_asesor/surat_tugas') ?>" class="link flex">
+                  <i class='bx bxs-file-pdf'></i>
+                  <span>Surat Tugas</span>
+                </a>
+              </li>
+              <li class="item">
                 <a href="<?php echo base_url('panel_asesor/kirim_pesan') ?>" class="link flex">
                   <i class='bx bx-envelope'></i>
                   <span>Kirim Pesan</span>

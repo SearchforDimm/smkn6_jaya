@@ -252,7 +252,7 @@ select::-ms-expand {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 .dropdown-download {
   position: relative;
@@ -416,6 +416,10 @@ th {
 
 th:hover {
   background-color: #f5f5f5;
+}
+
+.verif-resp-status {
+  min-width: 250px !important;
 }
 
 @media screen and (max-width: 1100px) {

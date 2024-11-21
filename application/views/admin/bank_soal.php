@@ -137,7 +137,11 @@ base_url('');
                                 </td>
                                 <td class="verif-resp">
                                     <div class="action-resp">
-                                        <div class="box-color warning-orange"><i class="bx bx-pencil"></i></div>
+                                        <div class="box-color warning-orange">
+                                            <a href="<?php echo base_url(uri: 'panel_admin/form_update_bank'); ?>" style="width: 100%">
+                                                <i class="bx bx-pencil"></i>
+                                            </a>
+                                        </div>
                                         <div class="box-color warning-green"><i class="bx bx-plus"></i></div>
                                     </div>
                                 </td>

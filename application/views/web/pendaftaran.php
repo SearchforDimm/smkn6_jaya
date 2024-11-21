@@ -120,7 +120,7 @@ $user = $this->db->get('tbl_user')->row_array();
                         </fieldset>
 
                         <fieldset>
-                          <legend>Sertifikasi</legend>
+                          <legend>Bukti Relevan</legend>
                           <div class="row">
                             <div class="col-md-2"></div>
                             <div class="col-md-12">
@@ -218,27 +218,6 @@ $user = $this->db->get('tbl_user')->row_array();
   </div>
 
   <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
-  <script>
-    console.log("JavaScript loaded"); // Check if this appears in the console
-    document.querySelectorAll('input[name="jurusan"]').forEach((radio) => {
-      radio.addEventListener('change', function() {
-        const selectedJurusan = this.value;
-        const skemaSelect = document.getElementById('skema-select');
-
-        // Show options that match the selected jurusan, hide others
-        Array.from(skemaSelect.options).forEach((option) => {
-          if (option.value === "" || option.getAttribute('data-jurusan') === selectedJurusan) {
-            option.style.display = "block";
-          } else {
-            option.style.display = "none";
-          }
-        });
-
-        // Reset the select value
-        skemaSelect.value = "";
-      });
-    });
-  </script>
   <script src="assets/kitkat/assets/plugins/jquery/jquery-1.11.1.min.js"></script>
   <script src="assets/kitkat/assets/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
   <script src="assets/kitkat/assets/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
@@ -283,7 +262,6 @@ $user = $this->db->get('tbl_user')->row_array();
   <script src="assets/kitkat/assets/js/pages/form_wizard.js"></script>
   <script src="assets/kitkat/assets/input/js/fileinput.js" type="text/javascript"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
   <script type="text/javascript">
     const flashData = $('.flash-data').data('flashdata');
     const flashDataKesalahan = $('.flash-data-kesalahan').data('flashdata');

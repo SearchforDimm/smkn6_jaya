@@ -220,4 +220,5 @@
 .delete-bank .button.disabled {
   background-color: #ccc;
   pointer-events: none;
+  cursor: not-allowed !important;
 }
