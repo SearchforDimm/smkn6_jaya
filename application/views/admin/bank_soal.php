@@ -142,7 +142,11 @@ base_url('');
                                                 <i class="bx bx-pencil"></i>
                                             </a>
                                         </div>
-                                        <div class="box-color warning-green"><i class="bx bx-plus"></i></div>
+                                        <div class="box-color warning-green">
+                                            <a href="<?php echo base_url(uri: 'panel_admin/form_tambah_bank'); ?>" style="width: 100%">
+                                                <i class="bx bx-plus"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </td>
                                 <td>

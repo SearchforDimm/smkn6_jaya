@@ -71,9 +71,16 @@ base_url('');
                         <input type="text">
                     </div>
                     <div class="form-bank">
-                        <label>Pilih kelas</label>
-                        <input type="text">
+                        <label>Pilih Kelas</label>
+                        <select>
+                            <option value="">--Pilih Kelas--</option>
+                            <option value="XII RPL">XII RPL</option>
+                            <option value="XII AKL">XII AKL</option>
+                            <option value="XII ANIMASI">XII ANIMASI</option>
+                            <option value="XII DKV">XII DKV</option>
+                        </select>
                     </div>
+
                 </div>
                 <div class="form-row">
                     <div class="form-bank-blue">
